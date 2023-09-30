@@ -12,14 +12,26 @@ struct ListRowView: View {
     let item: ItemModel
     
     var body: some View {
-        HStack{
-            Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
-                .foregroundStyle(item.isCompleted ? .green : .yellow)
-            Text(item.title)
-            Spacer()
+        VStack{
+            HStack{
+                Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
+                    .foregroundStyle(item.isCompleted ? .green : .yellow)
+                Text(item.title)
+                Spacer()
+            }
+            .font(.title2)
+            .padding(.vertical, 8)
+            
+            if item.hasReminder{
+                HStack{
+                    Text(item.dueDate.formatted())
+                    Spacer()
+                }
+                .font(.subheadline)
+                .foregroundColor(.gray)
+                .padding(.vertical, 4)
+            }
         }
-        .font(.title2)
-        .padding(.vertical, 8)
     }
 }
 

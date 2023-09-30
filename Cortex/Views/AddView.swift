@@ -12,6 +12,8 @@ struct AddView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var listViewModel: ListViewModel
     @State var textFieldText: String = ""
+    @State var date = Date()
+    @State var hasDueDate: Bool = false
     
     var body: some View {
         
@@ -23,6 +25,14 @@ struct AddView: View {
                     .frame(height: 55)
                     .background(Color(red: 0.9, green: 0.9, blue: 0.9))
                     .cornerRadius(20)
+                
+                Toggle(isOn: $hasDueDate){
+                    Text("Reminder")
+                }
+                
+                if ( hasDueDate){
+                    DatePicker("Due Date", selection: $date, displayedComponents: [.date, .hourAndMinute])
+                }
                 
                 Button(action: saveButtonPressed, label: {
                     Text("Save".uppercased())
@@ -43,7 +53,7 @@ struct AddView: View {
     
     func saveButtonPressed(){
         if isValidText(){
-            listViewModel.addItem(title: textFieldText)
+            listViewModel.addItem(title: textFieldText, hasReminder: hasDueDate, dueDate: date)
             presentationMode.wrappedValue.dismiss()
         }
     }

@@ -42,8 +42,8 @@ class ListViewModel: ObservableObject{
         items.remove(atOffsets: index)
     }
     
-    func addItem(title: String){
-        let newItem = ItemModel(title: title, isCompleted: false)
+    func addItem(title: String, hasReminder: Bool, dueDate: Date){
+        let newItem = ItemModel(title: title, isCompleted: false, hasReminder: hasReminder, dueDate: dueDate)
         items.append(newItem)
     }
     

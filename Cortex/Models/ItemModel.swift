@@ -17,11 +17,15 @@ struct ItemModel: Identifiable{
     let id: String
     let title: String
     let isCompleted: Bool
+    let hasReminder: Bool
+    let dueDate: Date
     
-    init(id: String = UUID().uuidString, title: String, isCompleted: Bool) {
+    init(id: String = UUID().uuidString, title: String, isCompleted: Bool, hasReminder: Bool = false, dueDate: Date = Date()) {
         self.id = id
         self.title = title
         self.isCompleted = isCompleted
+        self.hasReminder = hasReminder
+        self.dueDate = dueDate
     }
     
     func toggleCompletion() -> ItemModel{
