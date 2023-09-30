@@ -42,8 +42,17 @@ struct AddView: View {
     }
     
     func saveButtonPressed(){
-        listViewModel.addItem(title: textFieldText)
-        presentationMode.wrappedValue.dismiss()
+        if isValidText(){
+            listViewModel.addItem(title: textFieldText)
+            presentationMode.wrappedValue.dismiss()
+        }
+    }
+    
+    func isValidText() -> Bool {
+        if textFieldText.isEmpty {
+            return false
+        }
+        return true
     }
 }
 

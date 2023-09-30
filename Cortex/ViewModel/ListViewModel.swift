@@ -5,6 +5,15 @@
 //  Created by Sravan Karuturi on 9/26/23.
 //
 
+/*
+ CRUD
+ 
+ Create
+ Read
+ Update
+ Delete
+ */
+
 import Foundation
 
 class ListViewModel: ObservableObject{
@@ -36,5 +45,13 @@ class ListViewModel: ObservableObject{
     func addItem(title: String){
         let newItem = ItemModel(title: title, isCompleted: false)
         items.append(newItem)
+    }
+    
+    func updateItem(item: ItemModel){
+        if let itemIndex = items.firstIndex(where: {$0.id == item.id }){
+            items[itemIndex] = item.toggleCompletion()
+        }else{
+            print("Trying to get a non existent item: " + item.id + "-" + item.title)
+        }
     }
 }
