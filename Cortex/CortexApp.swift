@@ -8,6 +8,17 @@
 import SwiftUI
 import SwiftData
 
+
+/*
+ 
+ MVVM - Architecture
+ 
+ Model - Data Points
+ View - UI
+ ViewModel - Manages Models for Views.
+ 
+ */
+
 @main
 struct CortexApp: App {
     var sharedModelContainer: ModelContainer = {
@@ -22,10 +33,14 @@ struct CortexApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
+    @StateObject var listViewModel: ListViewModel = ListViewModel()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                ListView()
+            }.environmentObject(listViewModel)
         }
         .modelContainer(sharedModelContainer)
     }
