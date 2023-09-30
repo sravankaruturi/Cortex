@@ -12,7 +12,7 @@ struct AddView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var listViewModel: ListViewModel
     @State var textFieldText: String = ""
-    @State var date = Date()
+    @State var dueDate = Date()
     @State var hasDueDate: Bool = false
     
     var body: some View {
@@ -31,7 +31,7 @@ struct AddView: View {
                 }
                 
                 if ( hasDueDate){
-                    DatePicker("Due Date", selection: $date, displayedComponents: [.date, .hourAndMinute])
+                    DatePicker("Due Date", selection: $dueDate, displayedComponents: [.date, .hourAndMinute])
                 }
                 
                 Button(action: saveButtonPressed, label: {
@@ -53,7 +53,7 @@ struct AddView: View {
     
     func saveButtonPressed(){
         if isValidText(){
-            listViewModel.addItem(title: textFieldText, hasReminder: hasDueDate, dueDate: date)
+            listViewModel.addItem(title: textFieldText, hasReminder: hasDueDate, dueDate: dueDate)
             presentationMode.wrappedValue.dismiss()
         }
     }
