@@ -11,7 +11,7 @@ import Foundation
 // All are let variables.
 // Only the methods can change the model.
 
-struct ItemModel: Identifiable{
+struct ItemModel: Identifiable, Codable {
     
     // We're using strings here because they're a little bit easier to work with when we try to integrate with 3rd party databases
     let id: String

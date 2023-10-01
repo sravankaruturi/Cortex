@@ -18,7 +18,14 @@ import Foundation
 
 class ListViewModel: ObservableObject{
     
-    @Published var items: [ItemModel] = []
+    let itemsKey: String = "items_list"
+    
+    @Published var items: [ItemModel] = [] {
+        didSet{
+            // gets called any time the array gets set/modified
+            saveItems()
+        }
+    }
     
     init() {
         getItems()
@@ -26,12 +33,14 @@ class ListViewModel: ObservableObject{
     
     // Add some dummy items for now.
     func getItems(){
-        let newItems = [
-            ItemModel(title: "This is the first title", isCompleted: false),
-            ItemModel(title: "This is the second", isCompleted: true),
-            ItemModel(title: "Third", isCompleted: false),
-        ]
-        items.append(contentsOf: newItems)
+        
+        guard 
+            let data = UserDefaults.standard.data(forKey: itemsKey),
+            let loadedItems = try? JSONDecoder().decode([ItemModel].self, from: data)
+        else { return }
+        
+        self.items = loadedItems
+        
     }
     
     func moveItem(oldIndex: IndexSet, newIndex: Int){
@@ -54,4 +63,11 @@ class ListViewModel: ObservableObject{
             print("Trying to get a non existent item: " + item.id + "-" + item.title)
         }
     }
+    
+    func saveItems(){
+        if let encodedData = try? JSONEncoder().encode(items) {
+            UserDefaults.standard.set(encodedData, forKey: itemsKey)
+        }
+    }
+    
 }
