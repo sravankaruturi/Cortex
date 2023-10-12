@@ -10,7 +10,10 @@ import SwiftUI
 struct AddView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    
     @EnvironmentObject var listViewModel: ListViewModel
+    @Environment(\.modelContext) var context
+    
     @State var textFieldText: String = ""
     @State var dueDate = Date()
     @State var hasDueDate: Bool = false
@@ -53,7 +56,7 @@ struct AddView: View {
     
     func saveButtonPressed(){
         if isValidText(){
-            listViewModel.addItem(title: textFieldText, hasReminder: hasDueDate, dueDate: dueDate)
+            listViewModel.addItem(title: textFieldText, hasReminder: hasDueDate, dueDate: dueDate, context: context)
             presentationMode.wrappedValue.dismiss()
         }
     }

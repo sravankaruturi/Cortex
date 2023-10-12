@@ -9,13 +9,21 @@ import SwiftUI
 
 struct ListRowView: View {
     
-    let item: ItemModel
+    var item: ItemModel
+    
+    @Environment(\.modelContext) var context
+    @EnvironmentObject var listViewModel: ListViewModel
     
     var body: some View {
         VStack{
             HStack{
                 Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
                     .foregroundStyle(item.isCompleted ? .green : .yellow)
+                    .onTapGesture {
+                        withAnimation(.linear){
+                            listViewModel.toggleItemCompleted(item: item, context: context)
+                        }
+                    }
                 Text(item.title)
                 Spacer()
             }
@@ -36,19 +44,19 @@ struct ListRowView: View {
 }
 
 
-struct ListRowView_Previews: PreviewProvider {
-    
-    static var item1 = ItemModel(title: "This is the first thing", isCompleted: false)
-    static var item2 = ItemModel(title: "This is the second", isCompleted: true)
-    static var item3 = ItemModel(title: "Third", isCompleted: false)
-    
-    static var previews: some View{
-        
-        Group{
-            ListRowView(item: item1)
-            ListRowView(item: item2)
-            ListRowView(item: item3)
-        }.previewLayout(.sizeThatFits)
-    }
-    
-}
+//struct ListRowView_Previews: PreviewProvider {
+//    
+//    static var item1 = ItemModel(title: "This is the first thing", isCompleted: false)
+//    static var item2 = ItemModel(title: "This is the second", isCompleted: true)
+//    static var item3 = ItemModel(title: "Third", isCompleted: false)
+//    
+//    static var previews: some View{
+//        
+//        Group{
+//            ListRowView(item: item1)
+//            ListRowView(item: item2)
+//            ListRowView(item: item3)
+//        }.previewLayout(.sizeThatFits)
+//    }
+//    
+//}

@@ -6,21 +6,25 @@
 //
 
 import Foundation
+import SwiftData
 
 // Immutable Structs.
 // All are let variables.
 // Only the methods can change the model.
 
-struct ItemModel: Identifiable, Codable {
+@Model
+class ItemModel: Identifiable {
     
     // We're using strings here because they're a little bit easier to work with when we try to integrate with 3rd party databases
-    let id: String
-    let title: String
-    let isCompleted: Bool
-    let hasReminder: Bool
-    let dueDate: Date
+    @Attribute(.unique)
+    var id: String
     
-    init(id: String = UUID().uuidString, title: String, isCompleted: Bool, hasReminder: Bool = false, dueDate: Date = Date()) {
+    var title: String
+    var isCompleted: Bool
+    var hasReminder: Bool
+    var dueDate: Date
+    
+    public init(id: String = UUID().uuidString, title: String, isCompleted: Bool, hasReminder: Bool = false, dueDate: Date = Date()) {
         self.id = id
         self.title = title
         self.isCompleted = isCompleted

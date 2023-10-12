@@ -17,7 +17,6 @@
 		F695F4852AC26F6F004B2EFD /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F4842AC26F6F004B2EFD /* AddView.swift */; };
 		F695F4882AC27C5D004B2EFD /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F4872AC27C5D004B2EFD /* ItemModel.swift */; };
 		F695F48B2AC34B27004B2EFD /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F48A2AC34B27004B2EFD /* ListViewModel.swift */; };
-		F6BD9CC22AC8D73B00B2CF50 /* ItemList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F6BD9CC02AC8D73B00B2CF50 /* ItemList.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +31,6 @@
 		F695F4842AC26F6F004B2EFD /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		F695F4872AC27C5D004B2EFD /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
 		F695F48A2AC34B27004B2EFD /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
-		F6BD9CC12AC8D73B00B2CF50 /* ItemList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemList.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +70,6 @@
 				F695F46D2AC10870004B2EFD /* ContentView.swift */,
 				F695F46F2AC10870004B2EFD /* Item.swift */,
 				F695F4712AC10871004B2EFD /* Assets.xcassets */,
-				F6BD9CC02AC8D73B00B2CF50 /* ItemList.xcdatamodeld */,
 				F695F4732AC10871004B2EFD /* Preview Content */,
 			);
 			path = Cortex;
@@ -186,7 +183,6 @@
 				F695F46E2AC10870004B2EFD /* ContentView.swift in Sources */,
 				F695F4852AC26F6F004B2EFD /* AddView.swift in Sources */,
 				F695F4832AC26DA2004B2EFD /* ListRowView.swift in Sources */,
-				F6BD9CC22AC8D73B00B2CF50 /* ItemList.xcdatamodeld in Sources */,
 				F695F4702AC10870004B2EFD /* Item.swift in Sources */,
 				F695F4882AC27C5D004B2EFD /* ItemModel.swift in Sources */,
 				F695F48B2AC34B27004B2EFD /* ListViewModel.swift in Sources */,
@@ -396,19 +392,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F6BD9CC02AC8D73B00B2CF50 /* ItemList.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F6BD9CC12AC8D73B00B2CF50 /* ItemList.xcdatamodel */,
-			);
-			currentVersion = F6BD9CC12AC8D73B00B2CF50 /* ItemList.xcdatamodel */;
-			path = ItemList.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F695F4602AC10870004B2EFD /* Project object */;
 }
