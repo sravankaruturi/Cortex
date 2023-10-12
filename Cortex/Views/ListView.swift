@@ -6,23 +6,28 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ListView: View {
     
+    @Environment(\.modelContext) var context
+    
     @EnvironmentObject var listViewModel: ListViewModel
+    
+    @Query() var items: [ItemModel]
     
     var body: some View {
         List{
-            ForEach(listViewModel.items){ item in
+            ForEach(items){ item in
                 ListRowView(item: item)
-                    .onTapGesture {
-                        withAnimation(.linear){
-                            listViewModel.updateItem(item: item)
-                        }
-                    }
+
             }
-            .onDelete(perform: listViewModel.deleteItem)
-            .onMove(perform: listViewModel.moveItem)
+            .onDelete{ indexes in
+                for index in indexes {
+                    listViewModel.deleteItem(item: items[index], context: context)
+                }
+            }
+//            .onMove(perform: listViewModel.moveItem)
         }
         .listStyle(.plain)
         .navigationTitle("Todo List 📝")
@@ -49,9 +54,9 @@ struct ListView: View {
 
 }
 
-#Preview {
-    NavigationView{
-        ListView()
-    }
-    .environmentObject(ListViewModel())
-}
+//#Preview {
+//    NavigationView{
+//        ListView()
+//    }
+//    .environmentObject(ListViewModel())
+//}

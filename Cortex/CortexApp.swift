@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import CoreData
 
 
 /*
@@ -21,18 +22,6 @@ import SwiftData
 
 @main
 struct CortexApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
     
     @StateObject var listViewModel: ListViewModel = ListViewModel()
 
@@ -40,8 +29,9 @@ struct CortexApp: App {
         WindowGroup {
             NavigationView{
                 ListView()
-            }.environmentObject(listViewModel)
+            }
+            .environmentObject(listViewModel)
         }
-        .modelContainer(sharedModelContainer)
+        .modelContainer(for: ItemModel.self)
     }
 }
