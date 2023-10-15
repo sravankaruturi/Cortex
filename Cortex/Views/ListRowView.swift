@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ListRowView: View {
     
-    var item: ItemModel
+    @Bindable var item: ItemModel
     
     @Environment(\.modelContext) var context
-    @EnvironmentObject var listViewModel: ListViewModel
+    
+    @State private var showEditView: Bool = false
     
     var body: some View {
         VStack{
@@ -21,7 +22,8 @@ struct ListRowView: View {
                     .foregroundStyle(item.isCompleted ? .green : .yellow)
                     .onTapGesture {
                         withAnimation(.linear){
-                            listViewModel.toggleItemCompleted(item: item, context: context)
+                            // listViewModel.toggleItemCompleted(item: item, context: context)
+                            item.isCompleted.toggle()
                         }
                     }
                 Text(item.title)
@@ -40,6 +42,29 @@ struct ListRowView: View {
                 .padding(.vertical, 4)
             }
         }
+        .swipeActions {
+            Button(role: .destructive) {
+                withAnimation {
+                    context.delete(item)
+                }
+            } label: {
+                Label("Delete", systemImage: "trash")
+                    .symbolVariant(.fill)
+            }
+            
+            Button {
+                showEditView = true
+            } label: {
+                Label("Edit", systemImage: "pencil")
+                    .symbolVariant(.fill)
+            }
+
+        }
+        .sheet(isPresented: $showEditView, content: {
+            EditListRowView(todoItem: item)
+                .presentationDetents([.medium])
+        })
+        
     }
 }
 
@@ -52,11 +77,8 @@ struct ListRowView: View {
 //    
 //    static var previews: some View{
 //        
-//        Group{
-//            ListRowView(item: item1)
-//            ListRowView(item: item2)
-//            ListRowView(item: item3)
-//        }.previewLayout(.sizeThatFits)
+//        ListRowView(item: item1)
+//        
 //    }
 //    
 //}

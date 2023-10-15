@@ -10,31 +10,27 @@ import SwiftUI
 struct AddView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    
-    @EnvironmentObject var listViewModel: ListViewModel
     @Environment(\.modelContext) var context
     
-    @State var textFieldText: String = ""
-    @State var dueDate = Date()
-    @State var hasDueDate: Bool = false
+    @State private var item: ItemModel = ItemModel()
     
     var body: some View {
         
         ScrollView{
             
             VStack{
-                TextField("Type something here...", text: $textFieldText)
+                TextField("Type something here...", text: $item.title)
                     .padding(.horizontal)
                     .frame(height: 55)
                     .background(Color(red: 0.9, green: 0.9, blue: 0.9))
                     .cornerRadius(20)
                 
-                Toggle(isOn: $hasDueDate){
+                Toggle(isOn: $item.hasReminder){
                     Text("Reminder")
                 }
                 
-                if ( hasDueDate){
-                    DatePicker("Due Date", selection: $dueDate, displayedComponents: [.date, .hourAndMinute])
+                if (item.hasReminder){
+                    DatePicker("Due Date", selection: $item.dueDate, displayedComponents: [.date, .hourAndMinute])
                 }
                 
                 Button(action: saveButtonPressed, label: {
@@ -56,21 +52,17 @@ struct AddView: View {
     
     func saveButtonPressed(){
         if isValidText(){
-            listViewModel.addItem(title: textFieldText, hasReminder: hasDueDate, dueDate: dueDate, context: context)
+            withAnimation {
+                context.insert(item)
+            }
             presentationMode.wrappedValue.dismiss()
         }
     }
     
     func isValidText() -> Bool {
-        if textFieldText.isEmpty {
+        if item.title.isEmpty {
             return false
         }
         return true
     }
-}
-
-#Preview {
-    NavigationView{
-        AddView()
-    }.environmentObject(ListViewModel())
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F671FD872ADC53D900D9458E /* EditListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD862ADC53D900D9458E /* EditListRowView.swift */; };
 		F695F46C2AC10870004B2EFD /* CortexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46B2AC10870004B2EFD /* CortexApp.swift */; };
 		F695F46E2AC10870004B2EFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46D2AC10870004B2EFD /* ContentView.swift */; };
 		F695F4702AC10870004B2EFD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46F2AC10870004B2EFD /* Item.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F671FD862ADC53D900D9458E /* EditListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListRowView.swift; sourceTree = "<group>"; };
 		F695F4682AC10870004B2EFD /* Cortex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cortex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F695F46B2AC10870004B2EFD /* CortexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CortexApp.swift; sourceTree = "<group>"; };
 		F695F46D2AC10870004B2EFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				F695F4802AC26A22004B2EFD /* ListView.swift */,
 				F695F4822AC26DA2004B2EFD /* ListRowView.swift */,
+				F671FD862ADC53D900D9458E /* EditListRowView.swift */,
 				F695F4842AC26F6F004B2EFD /* AddView.swift */,
 			);
 			path = Views;
@@ -185,6 +188,7 @@
 				F695F4832AC26DA2004B2EFD /* ListRowView.swift in Sources */,
 				F695F4702AC10870004B2EFD /* Item.swift in Sources */,
 				F695F4882AC27C5D004B2EFD /* ItemModel.swift in Sources */,
+				F671FD872ADC53D900D9458E /* EditListRowView.swift in Sources */,
 				F695F48B2AC34B27004B2EFD /* ListViewModel.swift in Sources */,
 				F695F46C2AC10870004B2EFD /* CortexApp.swift in Sources */,
 			);

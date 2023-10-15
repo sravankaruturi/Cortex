@@ -23,14 +23,11 @@ import CoreData
 @main
 struct CortexApp: App {
     
-    @StateObject var listViewModel: ListViewModel = ListViewModel()
-
     var body: some Scene {
         WindowGroup {
             NavigationView{
                 ListView()
             }
-            .environmentObject(listViewModel)
         }
         .modelContainer(for: ItemModel.self)
     }

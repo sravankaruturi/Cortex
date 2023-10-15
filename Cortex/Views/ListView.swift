@@ -12,8 +12,6 @@ struct ListView: View {
     
     @Environment(\.modelContext) var context
     
-    @EnvironmentObject var listViewModel: ListViewModel
-    
     @Query() var items: [ItemModel]
     
     var body: some View {
@@ -24,10 +22,12 @@ struct ListView: View {
             }
             .onDelete{ indexes in
                 for index in indexes {
-                    listViewModel.deleteItem(item: items[index], context: context)
+                    context.delete(items[index])
                 }
             }
-//            .onMove(perform: listViewModel.moveItem)
+            .onMove{ _, _ in
+                // listViewModel.moveItem(items: items, context: context)
+            }
         }
         .listStyle(.plain)
         .navigationTitle("Todo List 📝")
@@ -36,7 +36,10 @@ struct ListView: View {
                 EditButton()
             }
             ToolbarItem(placement: .bottomBar){
-                NavigationLink(destination: AddView()){
+                NavigationLink{
+                    AddView()
+                }
+                label: {
                     ZStack{
                         
                         Circle()
@@ -53,10 +56,3 @@ struct ListView: View {
     }
 
 }
-
-//#Preview {
-//    NavigationView{
-//        ListView()
-//    }
-//    .environmentObject(ListViewModel())
-//}

@@ -8,12 +8,9 @@
 import Foundation
 import SwiftData
 
-// Immutable Structs.
-// All are let variables.
-// Only the methods can change the model.
 
 @Model
-class ItemModel: Identifiable {
+final class ItemModel {
     
     // We're using strings here because they're a little bit easier to work with when we try to integrate with 3rd party databases
     @Attribute(.unique)
@@ -23,13 +20,19 @@ class ItemModel: Identifiable {
     var isCompleted: Bool
     var hasReminder: Bool
     var dueDate: Date
+    var sortOrder: Int
     
-    public init(id: String = UUID().uuidString, title: String, isCompleted: Bool, hasReminder: Bool = false, dueDate: Date = Date()) {
+    var createdDate: Date
+    
+    public init(id: String = UUID().uuidString, title: String = "", isCompleted: Bool = false, hasReminder: Bool = false, dueDate: Date = Date(), createdDate: Date = .now) {
         self.id = id
         self.title = title
         self.isCompleted = isCompleted
         self.hasReminder = hasReminder
         self.dueDate = dueDate
+        self.sortOrder = -1
+        
+        self.createdDate = createdDate
     }
     
     func toggleCompletion() -> ItemModel{
