@@ -22,7 +22,7 @@ struct ListRowView: View {
                     .foregroundStyle(item.isCompleted ? .green : .yellow)
                     .onTapGesture {
                         withAnimation(.linear){
-                            // listViewModel.toggleItemCompleted(item: item, context: context)
+                            NotificationManager.instance.removeNotificationForItem(item)
                             item.isCompleted.toggle()
                         }
                     }

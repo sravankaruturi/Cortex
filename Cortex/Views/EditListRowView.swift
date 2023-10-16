@@ -51,6 +51,7 @@ struct EditListRowView: View {
     
     func saveButtonPressed(){
         if isValidText(){
+            NotificationManager.instance.rescheduleNotifications(todoItem)
             presentationMode.wrappedValue.dismiss()
         }
     }
