@@ -12,7 +12,7 @@ struct ListView: View {
     
     @Environment(\.modelContext) var context
     
-    @Query() var items: [ItemModel]
+    @Query(sort: \ItemModel.sortOrder) var items: [ItemModel]
     
     var body: some View {
         List{
@@ -25,9 +25,15 @@ struct ListView: View {
                     context.delete(items[index])
                 }
             }
-            .onMove{ _, _ in
-                // listViewModel.moveItem(items: items, context: context)
-            }
+//            .onMove{ from, to in
+//                print("On Move Entered")
+//                for (i, item) in items.enumerated(){
+//                    item.sortOrder = i
+//                    if ( item.isCompleted ){
+//                        item.sortOrder = Int.max
+//                    }
+//                }
+//            }
         }
         .listStyle(.plain)
         .navigationTitle("Todo List 📝")

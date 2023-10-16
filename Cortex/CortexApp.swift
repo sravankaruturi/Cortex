@@ -23,6 +23,8 @@ import CoreData
 @main
 struct CortexApp: App {
     
+    @StateObject private var cortexViewModel = CortexViewModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView{
@@ -30,5 +32,6 @@ struct CortexApp: App {
             }
         }
         .modelContainer(for: ItemModel.self)
+        .environmentObject(cortexViewModel)
     }
 }

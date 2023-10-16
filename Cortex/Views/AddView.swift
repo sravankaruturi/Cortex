@@ -12,6 +12,8 @@ struct AddView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var context
     
+    @EnvironmentObject var cortexViewModel: CortexViewModel
+    
     @State private var item: ItemModel = ItemModel()
     
     var body: some View {
@@ -54,6 +56,7 @@ struct AddView: View {
         if isValidText(){
             withAnimation {
                 context.insert(item)
+                NotificationManager.instance.scheduleNotifications(item)
             }
             presentationMode.wrappedValue.dismiss()
         }
