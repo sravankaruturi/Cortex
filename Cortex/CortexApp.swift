@@ -23,15 +23,15 @@ import CoreData
 @main
 struct CortexApp: App {
     
-    @StateObject var listViewModel: ListViewModel = ListViewModel()
-
+    @StateObject private var cortexViewModel = CortexViewModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView{
                 ListView()
             }
-            .environmentObject(listViewModel)
         }
         .modelContainer(for: ItemModel.self)
+        .environmentObject(cortexViewModel)
     }
 }

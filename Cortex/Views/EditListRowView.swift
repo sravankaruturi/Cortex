@@ -1,38 +1,36 @@
 //
-//  AddView.swift
+//  EditListRowView.swift
 //  Cortex
 //
-//  Created by Sravan Karuturi on 9/25/23.
+//  Created by Sravan Karuturi on 10/15/23.
 //
 
 import SwiftUI
 
-struct AddView: View {
+struct EditListRowView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var context
     
-    @EnvironmentObject var cortexViewModel: CortexViewModel
-    
-    @State private var item: ItemModel = ItemModel()
+    @Bindable var todoItem: ItemModel
     
     var body: some View {
         
         ScrollView{
-            
             VStack{
-                TextField("Type something here...", text: $item.title)
-                    .padding(.horizontal)
-                    .frame(height: 55)
-                    .background(Color(red: 0.9, green: 0.9, blue: 0.9))
-                    .cornerRadius(20)
                 
-                Toggle(isOn: $item.hasReminder){
+                TextField("To Do title", text: $todoItem.title)
+                    .padding(.horizontal)
+                    .frame(height: 60)
+                    .cornerRadius(20)
+                    .border(Color.black)
+                
+                Toggle(isOn: $todoItem.hasReminder){
                     Text("Reminder")
                 }
                 
-                if (item.hasReminder){
-                    DatePicker("Due Date", selection: $item.dueDate, displayedComponents: [.date, .hourAndMinute])
+                if (todoItem.hasReminder){
+                    DatePicker("Due Date", selection: $todoItem.dueDate, displayedComponents: [.date, .hourAndMinute])
                 }
                 
                 Button(action: saveButtonPressed, label: {
@@ -44,26 +42,21 @@ struct AddView: View {
                         .background(Color.accentColor)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 })
+                
             }
             .padding(15)
-            
         }
-        .navigationTitle("Add an Item 🖋️")
-        
+        .navigationTitle("Edit an item 🖋️")
     }
     
     func saveButtonPressed(){
         if isValidText(){
-            withAnimation {
-                context.insert(item)
-                NotificationManager.instance.scheduleNotifications(item)
-            }
             presentationMode.wrappedValue.dismiss()
         }
     }
     
     func isValidText() -> Bool {
-        if item.title.isEmpty {
+        if todoItem.title.isEmpty {
             return false
         }
         return true
