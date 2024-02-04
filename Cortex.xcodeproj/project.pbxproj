@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		F671FD872ADC53D900D9458E /* EditListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD862ADC53D900D9458E /* EditListRowView.swift */; };
 		F671FD892ADCE0D500D9458E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD882ADCE0D500D9458E /* NotificationManager.swift */; };
+		F671FD8B2ADD091C00D9458E /* MainMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD8A2ADD091C00D9458E /* MainMenuOptions.swift */; };
+		F671FD8D2ADD19CA00D9458E /* PomoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD8C2ADD19CA00D9458E /* PomoView.swift */; };
+		F671FD8F2ADDC9E800D9458E /* PomoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD8E2ADDC9E800D9458E /* PomoViewModel.swift */; };
 		F695F46C2AC10870004B2EFD /* CortexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46B2AC10870004B2EFD /* CortexApp.swift */; };
 		F695F46E2AC10870004B2EFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46D2AC10870004B2EFD /* ContentView.swift */; };
-		F695F4702AC10870004B2EFD /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46F2AC10870004B2EFD /* Item.swift */; };
 		F695F4722AC10871004B2EFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F695F4712AC10871004B2EFD /* Assets.xcassets */; };
 		F695F4752AC10871004B2EFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F695F4742AC10871004B2EFD /* Preview Assets.xcassets */; };
 		F695F4812AC26A22004B2EFD /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F4802AC26A22004B2EFD /* ListView.swift */; };
@@ -24,10 +26,12 @@
 /* Begin PBXFileReference section */
 		F671FD862ADC53D900D9458E /* EditListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListRowView.swift; sourceTree = "<group>"; };
 		F671FD882ADCE0D500D9458E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		F671FD8A2ADD091C00D9458E /* MainMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOptions.swift; sourceTree = "<group>"; };
+		F671FD8C2ADD19CA00D9458E /* PomoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoView.swift; sourceTree = "<group>"; };
+		F671FD8E2ADDC9E800D9458E /* PomoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoViewModel.swift; sourceTree = "<group>"; };
 		F695F4682AC10870004B2EFD /* Cortex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cortex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F695F46B2AC10870004B2EFD /* CortexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CortexApp.swift; sourceTree = "<group>"; };
 		F695F46D2AC10870004B2EFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F695F46F2AC10870004B2EFD /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F695F4712AC10871004B2EFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F695F4742AC10871004B2EFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F695F4802AC26A22004B2EFD /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -51,6 +55,7 @@
 		F695F45F2AC10870004B2EFD = {
 			isa = PBXGroup;
 			children = (
+				F671FD8E2ADDC9E800D9458E /* PomoViewModel.swift */,
 				F695F46A2AC10870004B2EFD /* Cortex */,
 				F695F4692AC10870004B2EFD /* Products */,
 			);
@@ -72,7 +77,7 @@
 				F695F47F2AC26A0B004B2EFD /* Views */,
 				F695F46B2AC10870004B2EFD /* CortexApp.swift */,
 				F695F46D2AC10870004B2EFD /* ContentView.swift */,
-				F695F46F2AC10870004B2EFD /* Item.swift */,
+				F671FD8A2ADD091C00D9458E /* MainMenuOptions.swift */,
 				F695F4712AC10871004B2EFD /* Assets.xcassets */,
 				F695F4732AC10871004B2EFD /* Preview Content */,
 			);
@@ -90,6 +95,7 @@
 		F695F47F2AC26A0B004B2EFD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F671FD8C2ADD19CA00D9458E /* PomoView.swift */,
 				F695F4802AC26A22004B2EFD /* ListView.swift */,
 				F695F4822AC26DA2004B2EFD /* ListRowView.swift */,
 				F671FD862ADC53D900D9458E /* EditListRowView.swift */,
@@ -188,11 +194,13 @@
 				F695F4812AC26A22004B2EFD /* ListView.swift in Sources */,
 				F695F46E2AC10870004B2EFD /* ContentView.swift in Sources */,
 				F671FD892ADCE0D500D9458E /* NotificationManager.swift in Sources */,
+				F671FD8D2ADD19CA00D9458E /* PomoView.swift in Sources */,
 				F695F4852AC26F6F004B2EFD /* AddView.swift in Sources */,
+				F671FD8F2ADDC9E800D9458E /* PomoViewModel.swift in Sources */,
 				F695F4832AC26DA2004B2EFD /* ListRowView.swift in Sources */,
-				F695F4702AC10870004B2EFD /* Item.swift in Sources */,
 				F695F4882AC27C5D004B2EFD /* ItemModel.swift in Sources */,
 				F671FD872ADC53D900D9458E /* EditListRowView.swift in Sources */,
+				F671FD8B2ADD091C00D9458E /* MainMenuOptions.swift in Sources */,
 				F695F48B2AC34B27004B2EFD /* CortexViewModel.swift in Sources */,
 				F695F46C2AC10870004B2EFD /* CortexApp.swift in Sources */,
 			);

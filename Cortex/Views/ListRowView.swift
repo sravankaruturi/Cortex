@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ListRowView: View {
     
@@ -69,16 +70,24 @@ struct ListRowView: View {
 }
 
 
-//struct ListRowView_Previews: PreviewProvider {
-//    
-//    static var item1 = ItemModel(title: "This is the first thing", isCompleted: false)
-//    static var item2 = ItemModel(title: "This is the second", isCompleted: true)
-//    static var item3 = ItemModel(title: "Third", isCompleted: false)
-//    
-//    static var previews: some View{
-//        
-//        ListRowView(item: item1)
-//        
-//    }
-//    
-//}
+#Preview {
+    
+//    var item1 = ItemModel(title: "This is the first thing", isCompleted: false)
+//    var item2 = ItemModel(title: "This is the second", isCompleted: true)
+//    var item3 = ItemModel(title: "Third", isCompleted: false)
+    
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    do {
+        let container = try! ModelContainer(for: ItemModel.self, configurations: config)
+        
+        let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
+        
+        return ListRowView(item: item)
+            .modelContainer(container)
+            .padding(.all)
+    }
+    catch{
+        return Text(error.localizedDescription)
+    }
+    
+}
