@@ -53,10 +53,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F67DAADD2B6F63D90096FD02 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F671FD8A2ADD091C00D9458E /* MainMenuOptions.swift */,
+				F671FD882ADCE0D500D9458E /* NotificationManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		F695F45F2AC10870004B2EFD = {
 			isa = PBXGroup;
 			children = (
-				F671FD8E2ADDC9E800D9458E /* PomoViewModel.swift */,
 				F695F46A2AC10870004B2EFD /* Cortex */,
 				F695F4692AC10870004B2EFD /* Products */,
 			);
@@ -73,13 +81,12 @@
 		F695F46A2AC10870004B2EFD /* Cortex */ = {
 			isa = PBXGroup;
 			children = (
-				F67DAADC2B6F36060096FD02 /* Info.plist */,
+				F695F46B2AC10870004B2EFD /* CortexApp.swift */,
+				F695F47F2AC26A0B004B2EFD /* Views */,
 				F695F4862AC27C41004B2EFD /* Models */,
 				F695F4892AC34A62004B2EFD /* ViewModel */,
-				F695F47F2AC26A0B004B2EFD /* Views */,
-				F695F46B2AC10870004B2EFD /* CortexApp.swift */,
-				F695F46D2AC10870004B2EFD /* ContentView.swift */,
-				F671FD8A2ADD091C00D9458E /* MainMenuOptions.swift */,
+				F67DAADD2B6F63D90096FD02 /* Utils */,
+				F67DAADC2B6F36060096FD02 /* Info.plist */,
 				F695F4712AC10871004B2EFD /* Assets.xcassets */,
 				F695F4732AC10871004B2EFD /* Preview Content */,
 			);
@@ -97,6 +104,7 @@
 		F695F47F2AC26A0B004B2EFD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F695F46D2AC10870004B2EFD /* ContentView.swift */,
 				F671FD8C2ADD19CA00D9458E /* PomoView.swift */,
 				F695F4802AC26A22004B2EFD /* ListView.swift */,
 				F695F4822AC26DA2004B2EFD /* ListRowView.swift */,
@@ -117,8 +125,8 @@
 		F695F4892AC34A62004B2EFD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F671FD8E2ADDC9E800D9458E /* PomoViewModel.swift */,
 				F695F48A2AC34B27004B2EFD /* CortexViewModel.swift */,
-				F671FD882ADCE0D500D9458E /* NotificationManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

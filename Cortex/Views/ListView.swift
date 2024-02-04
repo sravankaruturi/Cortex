@@ -26,15 +26,9 @@ struct ListView: View {
                         context.delete(items[index])
                     }
                 }
-                //            .onMove{ from, to in
-                //                print("On Move Entered")
-                //                for (i, item) in items.enumerated(){
-                //                    item.sortOrder = i
-                //                    if ( item.isCompleted ){
-                //                        item.sortOrder = Int.max
-                //                    }
-                //                }
-                //            }
+                .onMove(perform: { indices, newOffset in
+                    move(from: indices, to: newOffset)
+                })
             }
             .listStyle(.plain)
             .navigationTitle("Todo List 📝")
@@ -62,6 +56,18 @@ struct ListView: View {
                 }
             }
         }
+    }
+    
+    private func move(from source: IndexSet, to destination: Int){
+        
+        var revisedItems: [ ItemModel ] = items.map{ $0 }
+        revisedItems.move(fromOffsets: source, toOffset: destination)
+        
+        for reverseIndex in stride( from: revisedItems.count - 1, through: 0, by: -1 )
+        {
+            revisedItems[reverseIndex].sortOrder = reverseIndex
+        }
+        
     }
 
 }
