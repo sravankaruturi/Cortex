@@ -16,7 +16,7 @@ final class ItemModel {
     @Attribute(.unique)
     var id: String
     
-    var title: String
+    var title: String 
     var isCompleted: Bool
     var hasReminder: Bool
     var dueDate: Date

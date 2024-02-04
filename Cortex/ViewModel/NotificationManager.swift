@@ -26,6 +26,17 @@ class NotificationManager{
         }
     }
     
+    public func removeNotificationForItem(_ item: ItemModel){
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [item.id])
+    }
+    
+    public func rescheduleNotifications(_ item: ItemModel){
+        
+        removeNotificationForItem(item)
+        scheduleNotifications(item)
+        
+    }
+    
     public func scheduleNotifications(_ item: ItemModel){
         // Schedule the notifications based on the item.
         

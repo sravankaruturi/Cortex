@@ -28,7 +28,7 @@ struct CortexApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                ListView()
+                ContentView()
             }
         }
         .modelContainer(for: ItemModel.self)
