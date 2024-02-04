@@ -29,6 +29,7 @@
 		F671FD8A2ADD091C00D9458E /* MainMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOptions.swift; sourceTree = "<group>"; };
 		F671FD8C2ADD19CA00D9458E /* PomoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoView.swift; sourceTree = "<group>"; };
 		F671FD8E2ADDC9E800D9458E /* PomoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoViewModel.swift; sourceTree = "<group>"; };
+		F67DAADC2B6F36060096FD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F695F4682AC10870004B2EFD /* Cortex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cortex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F695F46B2AC10870004B2EFD /* CortexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CortexApp.swift; sourceTree = "<group>"; };
 		F695F46D2AC10870004B2EFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		F695F46A2AC10870004B2EFD /* Cortex */ = {
 			isa = PBXGroup;
 			children = (
+				F67DAADC2B6F36060096FD02 /* Info.plist */,
 				F695F4862AC27C41004B2EFD /* Models */,
 				F695F4892AC34A62004B2EFD /* ViewModel */,
 				F695F47F2AC26A0B004B2EFD /* Views */,
@@ -333,12 +335,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cortex/Preview Content\"";
 				DEVELOPMENT_TEAM = 8Y28UR94RA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cortex/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cortex - Tasks";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -351,6 +357,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sravan.Cortex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -362,12 +369,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cortex/Preview Content\"";
 				DEVELOPMENT_TEAM = 8Y28UR94RA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cortex/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Cortex - Tasks";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -380,6 +391,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sravan.Cortex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
