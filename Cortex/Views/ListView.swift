@@ -40,19 +40,19 @@ struct ListView: View {
                     NavigationLink{
                         AddView()
                     }
-                label: {
-                    Image(systemName: "plus")
-//                    ZStack{
-//                        
-//                        Circle()
-//                        
-//                        Image(systemName: "plus")
-//                            .frame(width: 50, height: 50)
-//                            .shadow(radius: 10)
-//                            .foregroundColor(.white)
-//                        
-//                    }
-                }
+                    label: {
+                        Image(systemName: "plus")
+//                        ZStack{
+//
+//                            Circle()
+//
+//                            Image(systemName: "plus")
+//                                .frame(width: 50, height: 50)
+//                                .shadow(radius: 10)
+//                                .foregroundColor(.white)
+//
+//                        }
+                    }
                 }
             }
         }
