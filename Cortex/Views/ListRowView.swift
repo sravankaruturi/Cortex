@@ -22,7 +22,7 @@ struct ListRowView: View {
                 Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
                     .foregroundStyle(item.isCompleted ? .green : .yellow)
                     .onTapGesture {
-                        withAnimation(.linear){
+                        withAnimation(.bouncy){
                             NotificationManager.instance.removeNotificationForItem(item)
                             item.isCompleted.toggle()
                         }
@@ -30,8 +30,7 @@ struct ListRowView: View {
                 Text(item.title)
                 Spacer()
             }
-            .font(.title2)
-            .padding(.vertical, 8)
+            .font(.title3)
             
             if item.hasReminder{
                 HStack{
@@ -40,9 +39,9 @@ struct ListRowView: View {
                 }
                 .font(.subheadline)
                 .foregroundColor(.gray)
-                .padding(.vertical, 4)
             }
         }
+        .padding(.vertical, 2)
         .swipeActions {
             Button(role: .destructive) {
                 withAnimation {
