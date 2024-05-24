@@ -12,25 +12,38 @@ struct ListView: View {
     
     @Environment(\.modelContext) var context
     
-    @Query(sort: \ItemModel.sortOrder) var items: [ItemModel]
+    @Query(filter: #Predicate<ItemModel>{!$0.isCompleted}, sort: \ItemModel.sortOrder) var incompleteItems: [ItemModel]
+    
+    @Query(filter: #Predicate<ItemModel>{$0.isCompleted}, sort: \ItemModel.sortOrder) var completeItems: [ItemModel]
+    
+    @State private var completedExpanded: Bool = false
+    @State private var incompleteExpanded: Bool = true
     
     var body: some View {
         NavigationStack{
             List{
-                ForEach(items){ item in
-                    ListRowView(item: item)
-                    
+                Section("To Do", isExpanded: $incompleteExpanded) {
+                    ForEach(incompleteItems){ item in
+                        ListRowView(item: item)
+                        
+                    }
+                    .onDelete{ indexes in
+                        for index in indexes {
+                            context.delete(incompleteItems[index])
+                        }
+                    }
+                    .onMove(perform: { indices, newOffset in
+                        move(from: indices, to: newOffset)
+                    })
                 }
-                .onDelete{ indexes in
-                    for index in indexes {
-                        context.delete(items[index])
+                
+                Section("Completed", isExpanded: $completedExpanded){
+                    ForEach(completeItems){ item in
+                        ListRowView(item: item)
                     }
                 }
-                .onMove(perform: { indices, newOffset in
-                    move(from: indices, to: newOffset)
-                })
             }
-            .listStyle(.plain)
+            .listStyle(.sidebar)
             .navigationTitle("Todo List 📝")
             .toolbar{
                 ToolbarItem(placement: .topBarLeading){
@@ -40,18 +53,18 @@ struct ListView: View {
                     NavigationLink{
                         AddView()
                     }
-                    label: {
-                        Image(systemName: "plus")
-//                        ZStack{
-//
-//                            Circle()
-//
-//                            Image(systemName: "plus")
-//                                .frame(width: 50, height: 50)
-//                                .shadow(radius: 10)
-//                                .foregroundColor(.white)
-//
-//                        }
+                label: {
+                    Image(systemName: "plus")
+                    //                        ZStack{
+                    //
+                    //                            Circle()
+                    //
+                    //                            Image(systemName: "plus")
+                    //                                .frame(width: 50, height: 50)
+                    //                                .shadow(radius: 10)
+                    //                                .foregroundColor(.white)
+                    //
+                    //                        }
                     }
                 }
             }
@@ -60,7 +73,7 @@ struct ListView: View {
     
     private func move(from source: IndexSet, to destination: Int){
         
-        var revisedItems: [ ItemModel ] = items.map{ $0 }
+        var revisedItems: [ ItemModel ] = incompleteItems.map{ $0 }
         revisedItems.move(fromOffsets: source, toOffset: destination)
         
         for reverseIndex in stride( from: revisedItems.count - 1, through: 0, by: -1 )
