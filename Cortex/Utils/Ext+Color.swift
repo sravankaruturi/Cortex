@@ -10,6 +10,6 @@ import SwiftUI
 
 extension Color {
     
-    static let primary: Color = Color(UIColor(named: "Primary")!)
+    static let brandPrimary: Color = Color(UIColor(named: "Primary")!)
     
 }

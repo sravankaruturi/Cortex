@@ -25,7 +25,6 @@ struct ListView: View {
                 Section("To Do", isExpanded: $incompleteExpanded) {
                     ForEach(incompleteItems){ item in
                         ListRowView(item: item)
-                        
                     }
                     .onDelete{ indexes in
                         for index in indexes {

@@ -22,7 +22,7 @@ struct ContentView: View {
                 .tabItem { Label("Pomo", systemImage: "timer.circle.fill") }
             
         }
-        .tint(Color.primary)
+        .tint(Color.brandPrimary)
 
     }
 }

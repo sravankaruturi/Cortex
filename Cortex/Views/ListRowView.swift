@@ -29,6 +29,14 @@ struct ListRowView: View {
                     }
                 Text(item.title)
                 Spacer()
+                Image(systemName: "info.circle")
+                    .symbolRenderingMode(.monochrome)
+                    .foregroundStyle(Color.brandPrimary)
+                    .onTapGesture {
+                        withAnimation(.bouncy) {
+                            showEditView = true
+                        }
+                    }
             }
             .font(.title3)
             
