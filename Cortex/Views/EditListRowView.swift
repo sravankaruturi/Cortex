@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct EditListRowView: View {
     
@@ -17,13 +18,14 @@ struct EditListRowView: View {
     var body: some View {
         
         ScrollView{
-            VStack{
+            VStack(spacing: 20){
                 
                 TextField("To Do title", text: $todoItem.title)
                     .padding(.horizontal)
                     .frame(height: 60)
-                    .cornerRadius(20)
-                    .border(Color.black)
+                    .background(Color(red: 0, green: 1, blue: 0, opacity: 0.2 ))
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    
                 
                 Toggle(isOn: $todoItem.hasReminder){
                     Text("Reminder")
@@ -39,7 +41,7 @@ struct EditListRowView: View {
                         .font(.headline)
                         .frame(height: 55)
                         .frame(maxWidth: .infinity)
-                        .background(Color.accentColor)
+                        .background(Color.brandPrimary)
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 })
                 
@@ -62,4 +64,22 @@ struct EditListRowView: View {
         }
         return true
     }
+}
+
+#Preview {
+    
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    do {
+        let container = try! ModelContainer(for: ItemModel.self, configurations: config)
+        
+        let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
+        
+        return EditListRowView(todoItem: item)
+            .modelContainer(container)
+            .padding(.all)
+    }
+    catch{
+        return Text(error.localizedDescription)
+    }
+    
 }
