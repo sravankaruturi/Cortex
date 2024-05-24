@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddView: View {
     
@@ -20,12 +21,12 @@ struct AddView: View {
         
         ScrollView{
             
-            VStack{
+            VStack(spacing: 20){
                 TextField("Type something here...", text: $item.title)
                     .padding(.horizontal)
-                    .frame(height: 55)
-                    .background(Color(red: 0.9, green: 0.9, blue: 0.9))
-                    .cornerRadius(20)
+                    .frame(height: 60)
+                    .background(Color(red: 0, green: 1, blue: 0, opacity: 0.2))
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
                 
                 Toggle(isOn: $item.hasReminder){
                     Text("Reminder")
@@ -68,4 +69,22 @@ struct AddView: View {
         }
         return true
     }
+}
+
+#Preview {
+    
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    do {
+        let container = try! ModelContainer(for: ItemModel.self, configurations: config)
+        
+        let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
+        
+        return AddView()
+            .modelContainer(container)
+            .padding(.all)
+    }
+    catch{
+        return Text(error.localizedDescription)
+    }
+    
 }

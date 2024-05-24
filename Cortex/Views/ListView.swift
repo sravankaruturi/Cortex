@@ -12,7 +12,7 @@ struct ListView: View {
     
     @Environment(\.modelContext) var context
     
-    @Query(filter: #Predicate<ItemModel>{!$0.isCompleted}, sort: \ItemModel.sortOrder) var incompleteItems: [ItemModel]
+    @Query(filter: #Predicate<ItemModel>{!$0.isCompleted}, sort: \ItemModel.sortOrder, animation: .easeInOut(duration: 0.5)) var incompleteItems: [ItemModel]
     
     @Query(filter: #Predicate<ItemModel>{$0.isCompleted}, sort: \ItemModel.sortOrder) var completeItems: [ItemModel]
     
