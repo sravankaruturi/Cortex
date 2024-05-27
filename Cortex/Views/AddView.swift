@@ -49,7 +49,8 @@ struct AddView: View {
             .padding(15)
             
         }
-        .navigationTitle("Add an Item 🖋️")
+        .navigationTitle("Add a new item")
+        .navigationBarTitleDisplayMode(.inline)
         
     }
     

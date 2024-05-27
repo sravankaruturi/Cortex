@@ -43,7 +43,8 @@ struct ListView: View {
                 }
             }
             .listStyle(.sidebar)
-            .navigationTitle("Todo List 📝")
+            .navigationTitle("All Lists")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .topBarLeading){
                     EditButton()
