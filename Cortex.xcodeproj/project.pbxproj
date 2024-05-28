@@ -16,6 +16,12 @@
 		F677C0DA2C05551E00552894 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F677C0D92C05551E00552894 /* GoogleService-Info.plist */; };
 		F677C0DD2C05568A00552894 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = F677C0DC2C05568A00552894 /* FirebaseAnalytics */; };
 		F677C0DF2C05568A00552894 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F677C0DE2C05568A00552894 /* FirebaseAnalyticsSwift */; };
+		F677C0E22C05598700552894 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F677C0E12C05598700552894 /* FirebaseAuth */; };
+		F677C0E42C0559E500552894 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677C0E32C0559E500552894 /* AccountView.swift */; };
+		F677C0E72C055AEB00552894 /* SignInEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677C0E62C055AEB00552894 /* SignInEmailView.swift */; };
+		F677C0E92C055CF200552894 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677C0E82C055CF200552894 /* AuthenticationManager.swift */; };
+		F677C0EB2C05733400552894 /* SignedInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677C0EA2C05733400552894 /* SignedInView.swift */; };
+		F677C0ED2C05856900552894 /* SignInEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677C0EC2C05856900552894 /* SignInEmailViewModel.swift */; };
 		F67DAADF2B7060350096FD02 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67DAADE2B7060350096FD02 /* ListModel.swift */; };
 		F695F46C2AC10870004B2EFD /* CortexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46B2AC10870004B2EFD /* CortexApp.swift */; };
 		F695F46E2AC10870004B2EFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46D2AC10870004B2EFD /* ContentView.swift */; };
@@ -36,6 +42,11 @@
 		F671FD8E2ADDC9E800D9458E /* PomoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoViewModel.swift; sourceTree = "<group>"; };
 		F6741CAC2BFBAD1A007EBBF2 /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
 		F677C0D92C05551E00552894 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F677C0E32C0559E500552894 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		F677C0E62C055AEB00552894 /* SignInEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailView.swift; sourceTree = "<group>"; };
+		F677C0E82C055CF200552894 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		F677C0EA2C05733400552894 /* SignedInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignedInView.swift; sourceTree = "<group>"; };
+		F677C0EC2C05856900552894 /* SignInEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailViewModel.swift; sourceTree = "<group>"; };
 		F67DAADC2B6F36060096FD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F67DAADE2B7060350096FD02 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		F695F4682AC10870004B2EFD /* Cortex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cortex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F677C0DF2C05568A00552894 /* FirebaseAnalyticsSwift in Frameworks */,
+				F677C0E22C05598700552894 /* FirebaseAuth in Frameworks */,
 				F677C0DD2C05568A00552894 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +75,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F677C0E02C05598700552894 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F677C0E52C055ACC00552894 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				F677C0E32C0559E500552894 /* AccountView.swift */,
+				F677C0E62C055AEB00552894 /* SignInEmailView.swift */,
+				F677C0EA2C05733400552894 /* SignedInView.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
 		F67DAADD2B6F63D90096FD02 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +107,7 @@
 			children = (
 				F695F46A2AC10870004B2EFD /* Cortex */,
 				F695F4692AC10870004B2EFD /* Products */,
+				F677C0E02C05598700552894 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +146,7 @@
 		F695F47F2AC26A0B004B2EFD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F677C0E52C055ACC00552894 /* Accounts */,
 				F695F46D2AC10870004B2EFD /* ContentView.swift */,
 				F671FD8C2ADD19CA00D9458E /* PomoView.swift */,
 				F695F4802AC26A22004B2EFD /* ListView.swift */,
@@ -140,6 +171,8 @@
 			children = (
 				F671FD8E2ADDC9E800D9458E /* PomoViewModel.swift */,
 				F695F48A2AC34B27004B2EFD /* CortexViewModel.swift */,
+				F677C0E82C055CF200552894 /* AuthenticationManager.swift */,
+				F677C0EC2C05856900552894 /* SignInEmailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -163,6 +196,7 @@
 			packageProductDependencies = (
 				F677C0DC2C05568A00552894 /* FirebaseAnalytics */,
 				F677C0DE2C05568A00552894 /* FirebaseAnalyticsSwift */,
+				F677C0E12C05598700552894 /* FirebaseAuth */,
 			);
 			productName = Cortex;
 			productReference = F695F4682AC10870004B2EFD /* Cortex.app */;
@@ -222,19 +256,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F677C0ED2C05856900552894 /* SignInEmailViewModel.swift in Sources */,
 				F695F4812AC26A22004B2EFD /* ListView.swift in Sources */,
 				F695F46E2AC10870004B2EFD /* ContentView.swift in Sources */,
 				F671FD892ADCE0D500D9458E /* NotificationManager.swift in Sources */,
+				F677C0EB2C05733400552894 /* SignedInView.swift in Sources */,
 				F6741CAD2BFBAD1A007EBBF2 /* Ext+Color.swift in Sources */,
 				F671FD8D2ADD19CA00D9458E /* PomoView.swift in Sources */,
 				F695F4852AC26F6F004B2EFD /* AddView.swift in Sources */,
 				F671FD8F2ADDC9E800D9458E /* PomoViewModel.swift in Sources */,
 				F695F4832AC26DA2004B2EFD /* ListRowView.swift in Sources */,
 				F695F4882AC27C5D004B2EFD /* ItemModel.swift in Sources */,
+				F677C0E42C0559E500552894 /* AccountView.swift in Sources */,
+				F677C0E92C055CF200552894 /* AuthenticationManager.swift in Sources */,
 				F671FD872ADC53D900D9458E /* EditListRowView.swift in Sources */,
 				F671FD8B2ADD091C00D9458E /* MainMenuOptions.swift in Sources */,
 				F67DAADF2B7060350096FD02 /* ListModel.swift in Sources */,
 				F695F48B2AC34B27004B2EFD /* CortexViewModel.swift in Sources */,
+				F677C0E72C055AEB00552894 /* SignInEmailView.swift in Sources */,
 				F695F46C2AC10870004B2EFD /* CortexApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +512,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F677C0DB2C05568A00552894 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		F677C0E12C05598700552894 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F677C0DB2C05568A00552894 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

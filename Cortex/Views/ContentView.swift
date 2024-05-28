@@ -21,6 +21,9 @@ struct ContentView: View {
             PomoView()
                 .tabItem { Label("Pomo", systemImage: "timer.circle.fill") }
             
+            AccountView()
+                .tabItem { Label("Account", systemImage: "person.crop.circle")}
+            
         }
         .tint(Color.brandPrimary)
 
