@@ -8,22 +8,14 @@
 import SwiftUI
 import SwiftData
 import CoreData
+import FirebaseCore
 
-
-/*
- 
- MVVM - Architecture
- 
- Model - Data Points
- View - UI
- ViewModel - Manages Models for Views.
- 
- */
 
 @main
 struct CortexApp: App {
     
     @StateObject private var cortexViewModel = CortexViewModel()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     var body: some Scene {
         WindowGroup {
@@ -34,4 +26,14 @@ struct CortexApp: App {
         .modelContainer(for: ItemModel.self)
         .environmentObject(cortexViewModel)
     }
+}
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+      
+    FirebaseApp.configure()
+      
+    return true
+  }
 }
