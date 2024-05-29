@@ -55,18 +55,6 @@ struct SignInEmailView: View {
         .navigationTitle("Sign in with Email")
         .navigationBarTitleDisplayMode(.inline)
         .padding()
-//        .onDisappear(perform: {
-//            DispatchQueue.main.async {
-//                print("Disappear from Sign In View")
-//                let user = Auth.auth().currentUser
-//                if ( user == nil ){
-//                    print("Nil User")
-//                }else{
-//                    print(user!.email!)
-//                    loggedInUser = AuthDataResultModel(user: user!)
-//                }
-//            }
-//        })
     }
 }
 

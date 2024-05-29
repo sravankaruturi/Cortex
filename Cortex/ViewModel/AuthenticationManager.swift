@@ -64,8 +64,21 @@ final class AuthenticationManager {
         
     }
     
+    func resetPassword(email: String) async throws {
+        try await  Auth.auth().sendPasswordReset(withEmail: email)
+    }
+    
     func signOutCurrentUser() throws {
         try Auth.auth().signOut()
+    }
+    
+    func updatePassword(newPassword: String) async throws {
+        try await Auth.auth().currentUser?.updatePassword(to: newPassword)
+    }
+    
+    func updateEmail(email: String) async throws {
+        // TODO: We have to re-authenticate.
+        try await Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail: email)
     }
     
 }
