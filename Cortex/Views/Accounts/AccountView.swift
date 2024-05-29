@@ -52,21 +52,21 @@ struct AccountView: View {
             
             if userLoggedIn == nil  {
                 
-                NavigationLink {
-                    
-                    SignInEmailView(loggedInUser: $userLoggedIn)
-                    
-                } label: {
-                    Text("Sign in with Email")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                        .frame(height: 55)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.brandPrimary)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .padding()
-                    
-                }
+//                NavigationLink {
+//                    
+//                    SignInEmailView(loggedInUser: $userLoggedIn)
+//                    
+//                } label: {
+//                    Text("Sign in with Email")
+//                        .font(.headline)
+//                        .foregroundStyle(.white)
+//                        .frame(height: 55)
+//                        .frame(maxWidth: .infinity)
+//                        .background(Color.brandPrimary)
+//                        .clipShape(RoundedRectangle(cornerRadius: 10))
+//                        .padding()
+//                    
+//                }
                 
                 GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(style: .wide)) {
                     Task{

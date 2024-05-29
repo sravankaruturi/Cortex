@@ -50,38 +50,38 @@ struct SignedInView: View {
                     
                     Section("Actions"){
                         
-                        Button {
-                            guard let email = loggedInUser?.email else {
-                                print("Unable to access email")
-                                return
-                            }
-                            
-                            Task{
-                                do {
-                                    try await AuthenticationManager.shared.resetPassword(email: loggedInUser!.email!)
-                                } catch{
-                                    print(error)
-                                }
-                            }
-                            
-                        } label: {
-                            Text("Reset Password")
-                        }
-                        
-                        Button {
-                            // TODO: Open Change Password
-                        } label: {
-                            Text("Update Password")
-                        }
-                        
-                        Button {
-                            showChangeEmail = true
-                        } label: {
-                            Text("Update Email")
-                        }.sheet(isPresented: $showChangeEmail) {
-                            UpdateEmailView(oldEmail: "", newEmail: "")
-                                .presentationDetents([.medium])
-                        }
+//                        Button {
+//                            guard let email = loggedInUser?.email else {
+//                                print("Unable to access email")
+//                                return
+//                            }
+//                            
+//                            Task{
+//                                do {
+//                                    try await AuthenticationManager.shared.resetPassword(email: loggedInUser!.email!)
+//                                } catch{
+//                                    print(error)
+//                                }
+//                            }
+//                            
+//                        } label: {
+//                            Text("Reset Password")
+//                        }
+//                        
+//                        Button {
+//                            // TODO: Open Change Password
+//                        } label: {
+//                            Text("Update Password")
+//                        }
+//                        
+//                        Button {
+//                            showChangeEmail = true
+//                        } label: {
+//                            Text("Update Email")
+//                        }.sheet(isPresented: $showChangeEmail) {
+//                            UpdateEmailView(oldEmail: "", newEmail: "")
+//                                .presentationDetents([.medium])
+//                        }
                         
                         Button {
                             
