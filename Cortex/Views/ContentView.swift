@@ -11,6 +11,8 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(filter: #Predicate<ItemModel>{!$0.isCompleted}, sort: \ItemModel.sortOrder, animation: .easeInOut(duration: 0.5)) var incompleteItems: [ItemModel]
+    
+    @State var tintColor: Color = .brandPrimary
 
     var body: some View {
         TabView{
@@ -25,7 +27,21 @@ struct ContentView: View {
                 .tabItem { Label("Account", systemImage: "person.crop.circle")}
             
         }
-        .tint(Color.brandPrimary)
+        .tint(tintColor)
+        .onAppear{
+            // TODO: Store this in UserDefaults instead of waiting for the server to respond.
+            Task{
+                do {
+                    let user = try AuthenticationManager.shared.getAuthenticatedUser()
+                    let dbUser = try await UserManager.shared.getUser(userId: user.uid)
+                    withAnimation {
+                        tintColor = dbUser.accentColor
+                    }
+                }catch {
+                    // DO NOTHING
+                }
+            }
+        }
 
     }
 }
