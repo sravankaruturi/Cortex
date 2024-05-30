@@ -44,34 +44,6 @@ final class AuthenticationManager {
     }
 
     
-//    func signInWithGoogle() {
-//        
-//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-//
-//        // Create Google Sign In configuration object.
-//        let config = GIDConfiguration(clientID: clientID)
-//        GIDSignIn.sharedInstance.configuration = config
-//
-//        // Start the sign in flow!
-//        GIDSignIn.sharedInstance.signIn(withPresenting: self) { [unowned self] result, error in
-//          guard error == nil else {
-//            // ...
-//          }
-//
-//          guard let user = result?.user,
-//            let idToken = user.idToken?.tokenString
-//          else {
-//            // ...
-//          }
-//
-//          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
-//                                                         accessToken: user.accessToken.tokenString)
-//
-//          // ...
-//        }
-//        
-//    }
-    
     func getAuthenticatedUser() throws -> AuthDataResultModel {
         
         guard let user = Auth.auth().currentUser else {
@@ -126,7 +98,9 @@ extension AuthenticationManager {
     @discardableResult
     func signInWithCredential(credential: AuthCredential) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().signIn(with: credential)
-        return AuthDataResultModel(user: authDataResult.user)
+        let authDataResultModel = AuthDataResultModel(user: authDataResult.user)
+        try await UserManager.shared.createNewUser(auth: authDataResultModel)
+        return authDataResultModel
     }
     
 }

@@ -44,34 +44,19 @@ final class AccountViewModel : ObservableObject{
 
 struct AccountView: View {
     
-    @State private var userLoggedIn: AuthDataResultModel? = nil
+    @State private var userLoggedIn: Bool = false
     @StateObject private var vm: AccountViewModel = AccountViewModel()
     
     var body: some View {
         VStack{
             
-            if userLoggedIn == nil  {
-                
-//                NavigationLink {
-//                    
-//                    SignInEmailView(loggedInUser: $userLoggedIn)
-//                    
-//                } label: {
-//                    Text("Sign in with Email")
-//                        .font(.headline)
-//                        .foregroundStyle(.white)
-//                        .frame(height: 55)
-//                        .frame(maxWidth: .infinity)
-//                        .background(Color.brandPrimary)
-//                        .clipShape(RoundedRectangle(cornerRadius: 10))
-//                        .padding()
-//                    
-//                }
+            if !userLoggedIn {
                 
                 GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(style: .wide)) {
                     Task{
                         do{
-                            userLoggedIn = try await vm.signInGoogle()
+                            let user = try await vm.signInGoogle()
+                            userLoggedIn = (user != nil)
                         }catch{
                             print(error)
                         }
@@ -82,7 +67,7 @@ struct AccountView: View {
                 
             }else{
                 
-                SignedInView(loggedInUser: $userLoggedIn)
+                SettingsView(isUserLoggedIn: $userLoggedIn)
                 
             }
             
@@ -92,7 +77,8 @@ struct AccountView: View {
         .navigationTitle("Sign In")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
-            userLoggedIn = try? AuthenticationManager.shared.getAuthenticatedUser()
+            let user = try? AuthenticationManager.shared.getAuthenticatedUser()
+            userLoggedIn = (user != nil)
         })
     }
 }

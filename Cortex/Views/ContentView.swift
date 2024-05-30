@@ -10,12 +10,12 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [ItemModel]
+    @Query(filter: #Predicate<ItemModel>{!$0.isCompleted}, sort: \ItemModel.sortOrder, animation: .easeInOut(duration: 0.5)) var incompleteItems: [ItemModel]
 
     var body: some View {
         TabView{
             ListView()
-                .badge(items.count)
+                .badge(incompleteItems.count)
                 .tabItem { Label("To Do", systemImage: "checklist") }
             
             PomoView()

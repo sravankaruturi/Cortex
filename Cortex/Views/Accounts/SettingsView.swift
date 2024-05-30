@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-struct SignedInView: View {
+struct SettingsView: View {
     
-    @Binding var loggedInUser: AuthDataResultModel?
+    @StateObject private var viewModel: SettingsViewModel = SettingsViewModel()
     
-    @State var showChangeEmail: Bool = false
+    @Binding var isUserLoggedIn: Bool
+    @State var col: Color = .white
     
     var body: some View {
         
-        
         VStack{
-            if ( loggedInUser != nil ){
+            if ( isUserLoggedIn && viewModel.user != nil && viewModel.dbUser != nil ){
                 List{
                     
                     Section("Profile Picture") {
-                        if ( loggedInUser?.photoUrl != nil ){
-                            AsyncImage(url: URL(string: loggedInUser!.photoUrl!)) { image in
+                        if ( viewModel.user?.photoUrl != nil ){
+                            AsyncImage(url: URL(string: viewModel.user!.photoUrl!)) { image in
                                 image.resizable()
                                     .frame(width: 100, height: 100)
                                     .aspectRatio(contentMode: .fit)
@@ -45,49 +45,26 @@ struct SignedInView: View {
                     }
                     
                     Section("Account Details"){
-                        Text(loggedInUser!.email!)
+                        Text(viewModel.user!.email!)
+                        Text("Date Created: \(viewModel.dbUser!.dateCreated?.formatted() ?? "Not available")")
+                    }
+                    
+                    Section("Settings") {
+                        ColorPicker("Accent Color", selection: $col)
+                            .onChange(of: col) { oldValue, newValue in
+                                Task{
+                                    try? await self.viewModel.setColor(newColor: col);
+                                }
+                            }
                     }
                     
                     Section("Actions"){
-                        
-//                        Button {
-//                            guard let email = loggedInUser?.email else {
-//                                print("Unable to access email")
-//                                return
-//                            }
-//                            
-//                            Task{
-//                                do {
-//                                    try await AuthenticationManager.shared.resetPassword(email: loggedInUser!.email!)
-//                                } catch{
-//                                    print(error)
-//                                }
-//                            }
-//                            
-//                        } label: {
-//                            Text("Reset Password")
-//                        }
-//                        
-//                        Button {
-//                            // TODO: Open Change Password
-//                        } label: {
-//                            Text("Update Password")
-//                        }
-//                        
-//                        Button {
-//                            showChangeEmail = true
-//                        } label: {
-//                            Text("Update Email")
-//                        }.sheet(isPresented: $showChangeEmail) {
-//                            UpdateEmailView(oldEmail: "", newEmail: "")
-//                                .presentationDetents([.medium])
-//                        }
                         
                         Button {
                             
                             do {
                                 try AuthenticationManager.shared.signOutCurrentUser()
-                                loggedInUser = nil
+                                isUserLoggedIn = false
                                 // TODO: Programatically navigate to home.
                             }catch {
                                 print(error)
@@ -99,15 +76,31 @@ struct SignedInView: View {
                     }
                     
                 }
+            }else{
+                VStack(spacing: 20){
+                    Text("Not Logged In")
+                    Button {
+                        isUserLoggedIn = false
+                    } label: {
+                        Text("Go Back")
+                    }
+                }
+
             }
-            
         }
         .padding()
         .navigationTitle("Account Details")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
-            if loggedInUser == nil {
-                loggedInUser = try? AuthenticationManager.shared.getAuthenticatedUser()
+            Task{
+                do {
+                    try await viewModel.loadCurrentUser()
+                    if ( viewModel.dbUser != nil ){
+                        col = viewModel.dbUser!.accentColor
+                    }
+                }catch{
+                    isUserLoggedIn = false
+                }
             }
         })
         
@@ -116,6 +109,6 @@ struct SignedInView: View {
 
 #Preview {
     NavigationStack{
-        SignedInView(loggedInUser: .constant(AuthDataResultModel.mockData))
+        SettingsView(isUserLoggedIn: .constant(true))
     }
 }
