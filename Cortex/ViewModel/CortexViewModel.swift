@@ -33,9 +33,19 @@ class CortexViewModel: ObservableObject{
     
     init() {
         
-        // We need to check if a user has already been logged in.
+        refreshCurrentUser()
         
-        // If so, we load all the data to a local key value pair / model.
+    }
+    
+    func refreshCurrentUser() {
+        
+        Task{
+            do {
+                try await loadCurrentUser()
+            }catch {
+                print(error)
+            }
+        }
         
     }
     

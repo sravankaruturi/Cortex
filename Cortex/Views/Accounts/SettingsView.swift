@@ -93,13 +93,9 @@ struct SettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
             Task{
-                do {
-                    try await cortexVM.loadCurrentUser()
-                    if ( cortexVM.dbUser != nil ){
-                        col = cortexVM.dbUser!.accentColor
-                    }
-                }catch{
-                    isUserLoggedIn = false
+                cortexVM.refreshCurrentUser()
+                if ( cortexVM.dbUser != nil ){
+                    col = cortexVM.dbUser!.accentColor
                 }
             }
         })

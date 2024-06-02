@@ -9,10 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    
     @Environment(\.modelContext) private var modelContext
     @Query(filter: #Predicate<ItemModel>{!$0.isCompleted}, sort: \ItemModel.sortOrder, animation: .easeInOut(duration: 0.5)) var incompleteItems: [ItemModel]
     
-    @State var tintColor: Color = .brandPrimary
+    @AppStorage("tintColor") var tintColor: Color = .brandPrimary
     
     @EnvironmentObject var cortexVM: CortexViewModel
 
