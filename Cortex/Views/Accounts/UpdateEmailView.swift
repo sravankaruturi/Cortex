@@ -15,6 +15,8 @@ struct UpdateEmailView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    @EnvironmentObject var cortexVM: CortexViewModel
+    
     var body: some View {
         
         Form{
@@ -25,7 +27,7 @@ struct UpdateEmailView: View {
             Button(action: {
                 Task{
                     do{
-                        try await AuthenticationManager.shared.updateEmail(email: newEmail)
+                        try await cortexVM.authManager.updateEmail(email: newEmail)
                         Alert(title: Text("Changed Email succesfully"))
                     }catch{
                         print(error)
