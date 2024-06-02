@@ -28,6 +28,8 @@ class CortexViewModel: ObservableObject{
     @Published private(set) var user: AuthDataResultModel? = nil
     @Published var dbUser: DBAccountInfo? = nil
     
+    @AppStorage("tintColor") var tintColor: Color = .brandPrimary
+    
     var authManager: AuthenticationManager = AuthenticationManager()
     var userManager: UserManager = UserManager()
     
@@ -58,6 +60,9 @@ class CortexViewModel: ObservableObject{
     
     func setColor(newColor: Color) async throws {
         dbUser?.accentColor = newColor
+        withAnimation {
+            tintColor = newColor
+        }
         try await userManager.updateUser(accountInfo: dbUser!)
     }
     

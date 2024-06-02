@@ -25,7 +25,7 @@ struct AddView: View {
                 TextField("Type something here...", text: $item.title)
                     .padding(.horizontal)
                     .frame(height: 60)
-                    .background(Color(red: 0, green: 1, blue: 0, opacity: 0.2))
+                    .background(cortexViewModel.tintColor.opacity(0.2))
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                 
                 Toggle(isOn: $item.hasReminder){

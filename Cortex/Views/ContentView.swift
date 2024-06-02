@@ -13,8 +13,6 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(filter: #Predicate<ItemModel>{!$0.isCompleted}, sort: \ItemModel.sortOrder, animation: .easeInOut(duration: 0.5)) var incompleteItems: [ItemModel]
     
-    @AppStorage("tintColor") var tintColor: Color = .brandPrimary
-    
     @EnvironmentObject var cortexVM: CortexViewModel
 
     var body: some View {
@@ -33,7 +31,7 @@ struct ContentView: View {
                 .tabItem { Label("Account", systemImage: "person.crop.circle")}
             
         }
-        .tint(tintColor)
+        .tint(cortexVM.tintColor)
         .onAppear{
             // TODO: Store this in UserDefaults instead of waiting for the server to respond.
             Task{
@@ -41,7 +39,7 @@ struct ContentView: View {
                     let user = try cortexVM.authManager.getAuthenticatedUser()
                     let dbUser = try await cortexVM.userManager.getUser(userId: user.uid)
                     withAnimation {
-                        tintColor = dbUser.accentColor
+                        cortexVM.tintColor = dbUser.accentColor
                     }
                 }catch {
                     // DO NOTHING
