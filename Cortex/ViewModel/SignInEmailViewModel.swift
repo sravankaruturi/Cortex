@@ -14,16 +14,16 @@ final class SignInEmailViewModel : ObservableObject {
     
     public var user: AuthDataResultModel? = nil
     
-    public func signIn() async {
+    public func signIn(authManager: AuthenticationManager) async {
         
         guard !email.isEmpty, !password.isEmpty else {
             print("No Email or Password found")
             return
         }
         
-        var res = try? await AuthenticationManager.shared.signInUser(email:email, password: password)
+        var res = try? await authManager.signInUser(email:email, password: password)
         if ( res == nil ){
-            res = try? await AuthenticationManager.shared.createUser(email: email, password: password)
+            res = try? await authManager.createUser(email: email, password: password)
         }
         
         if ( res == nil ){
@@ -34,8 +34,8 @@ final class SignInEmailViewModel : ObservableObject {
         
     }
     
-    public func createUser() async {
-        _ = try? await AuthenticationManager.shared.createUser(email: email, password: password)
+    public func createUser(authmanager: AuthenticationManager) async {
+        _ = try? await authmanager.createUser(email: email, password: password)
     }
     
 }

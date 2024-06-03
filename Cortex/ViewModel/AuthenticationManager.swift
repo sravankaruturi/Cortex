@@ -37,13 +37,6 @@ struct AuthDataResultModel {
 // Remove this.
 final class AuthenticationManager {
     
-    static let shared = AuthenticationManager()
-    
-    private init() {
-        
-    }
-
-    
     func getAuthenticatedUser() throws -> AuthDataResultModel {
         
         guard let user = Auth.auth().currentUser else {
@@ -96,10 +89,10 @@ extension AuthenticationManager{
 extension AuthenticationManager {
     
     @discardableResult
-    func signInWithCredential(credential: AuthCredential) async throws -> AuthDataResultModel {
+    func signInWithCredential(credential: AuthCredential, userManager: UserManager) async throws -> AuthDataResultModel {
         let authDataResult = try await Auth.auth().signIn(with: credential)
         let authDataResultModel = AuthDataResultModel(user: authDataResult.user)
-        try await UserManager.shared.createNewUser(auth: authDataResultModel)
+        try await userManager.loginOrCreateNewUser(auth: authDataResultModel)
         return authDataResultModel
     }
     

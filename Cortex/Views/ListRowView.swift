@@ -14,6 +14,8 @@ struct ListRowView: View {
     
     @Environment(\.modelContext) var context
     
+    @EnvironmentObject var cortexVM: CortexViewModel
+    
     @State private var showEditView: Bool = false
     
     var body: some View {
@@ -31,7 +33,7 @@ struct ListRowView: View {
                 Spacer()
                 Image(systemName: "info.circle")
                     .symbolRenderingMode(.monochrome)
-                    .foregroundStyle(Color.brandPrimary)
+                    .foregroundStyle(cortexVM.tintColor)
                     .onTapGesture {
                         withAnimation(.bouncy) {
                             showEditView = true

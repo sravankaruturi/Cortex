@@ -15,6 +15,8 @@ struct SignInEmailView: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @EnvironmentObject var cortexVM: CortexViewModel
+    
     var body: some View {
         
         VStack{
@@ -32,7 +34,7 @@ struct SignInEmailView: View {
             
             Button {
                 Task{
-                    await vm.signIn()
+                    await vm.signIn(authManager: cortexVM.authManager)
                     DispatchQueue.main.async {
                         loggedInUser = vm.user
                     }

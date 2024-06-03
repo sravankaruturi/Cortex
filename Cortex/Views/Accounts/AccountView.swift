@@ -11,41 +11,11 @@ import FirebaseCore
 import GoogleSignIn
 import GoogleSignInSwift
 
-@MainActor
-final class AccountViewModel : ObservableObject{
-    
-    func signInGoogle() async throws -> AuthDataResultModel? {
-        
-        guard let topVC = UIApplication.topViewController() else {
-            throw URLError(.badServerResponse, userInfo: ["Info": "Cannot find top View controller"])
-        }
-        
-        guard let clientID = FirebaseApp.app()?.options.clientID else {
-            throw URLError(.badServerResponse, userInfo: ["Info" : "Cannot find Client ID"])
-        }
-        
-        let config = GIDConfiguration(clientID: clientID)
-        GIDSignIn.sharedInstance.configuration = config
-        
-        let gidSignInResult = try await GIDSignIn.sharedInstance.signIn(withPresenting: topVC)
-        
-        guard let idToken: String = gidSignInResult.user.idToken?.tokenString else {
-            throw URLError(.badServerResponse, userInfo: ["Info": "Cannot find ID Token"])
-        }
-        let accessToken: String = gidSignInResult.user.accessToken.tokenString
-        
-        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
-        
-        return try await AuthenticationManager.shared.signInWithCredential(credential: credential)
-        
-    }
-    
-}
-
 struct AccountView: View {
     
     @State private var userLoggedIn: Bool = false
-    @StateObject private var vm: AccountViewModel = AccountViewModel()
+    
+    @EnvironmentObject var cortexVM: CortexViewModel
     
     var body: some View {
         VStack{
@@ -55,7 +25,7 @@ struct AccountView: View {
                 GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(style: .wide)) {
                     Task{
                         do{
-                            let user = try await vm.signInGoogle()
+                            let user = try await cortexVM.signInGoogle()
                             userLoggedIn = (user != nil)
                         }catch{
                             print(error)
@@ -77,7 +47,7 @@ struct AccountView: View {
         .navigationTitle("Sign In")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
-            let user = try? AuthenticationManager.shared.getAuthenticatedUser()
+            let user = try? cortexVM.authManager.getAuthenticatedUser()
             userLoggedIn = (user != nil)
         })
     }

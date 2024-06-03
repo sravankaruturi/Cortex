@@ -8,15 +8,14 @@
 import SwiftUI
 import SwiftData
 import CoreData
-import FirebaseCore
-import FirebaseFirestore
-
 
 @main
 struct CortexApp: App {
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @StateObject private var cortexViewModel = CortexViewModel()
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     
     var body: some Scene {
         WindowGroup {
@@ -26,16 +25,5 @@ struct CortexApp: App {
         }
         .modelContainer(for: ItemModel.self)
         .environmentObject(cortexViewModel)
-    }
-}
-
-class AppDelegate: NSObject, UIApplicationDelegate {
-    func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
-        FirebaseApp.configure()
-        let db = Firestore.firestore()
-        
-        return true
     }
 }

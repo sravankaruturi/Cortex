@@ -9,20 +9,20 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @StateObject private var viewModel: SettingsViewModel = SettingsViewModel()
-    
     @Binding var isUserLoggedIn: Bool
     @State var col: Color = .white
+    
+    @EnvironmentObject var cortexVM: CortexViewModel
     
     var body: some View {
         
         VStack{
-            if ( isUserLoggedIn && viewModel.user != nil && viewModel.dbUser != nil ){
+            if ( isUserLoggedIn && cortexVM.user != nil && cortexVM.dbUser != nil ){
                 List{
                     
                     Section("Profile Picture") {
-                        if ( viewModel.user?.photoUrl != nil ){
-                            AsyncImage(url: URL(string: viewModel.user!.photoUrl!)) { image in
+                        if ( cortexVM.user?.photoUrl != nil ){
+                            AsyncImage(url: URL(string: cortexVM.user!.photoUrl!)) { image in
                                 image.resizable()
                                     .frame(width: 100, height: 100)
                                     .aspectRatio(contentMode: .fit)
@@ -45,15 +45,15 @@ struct SettingsView: View {
                     }
                     
                     Section("Account Details"){
-                        Text(viewModel.user!.email!)
-                        Text("Date Created: \(viewModel.dbUser!.dateCreated?.formatted() ?? "Not available")")
+                        Text(cortexVM.user!.email!)
+                        Text("Date Created: \(cortexVM.dbUser!.dateCreated?.formatted() ?? "Not available")")
                     }
                     
                     Section("Settings") {
                         ColorPicker("Accent Color", selection: $col)
                             .onChange(of: col) { oldValue, newValue in
                                 Task{
-                                    try? await self.viewModel.setColor(newColor: col);
+                                    try? await self.cortexVM.setColor(newColor: col);
                                 }
                             }
                     }
@@ -63,7 +63,7 @@ struct SettingsView: View {
                         Button {
                             
                             do {
-                                try AuthenticationManager.shared.signOutCurrentUser()
+                                try cortexVM.authManager.signOutCurrentUser()
                                 isUserLoggedIn = false
                                 // TODO: Programatically navigate to home.
                             }catch {
@@ -93,13 +93,9 @@ struct SettingsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
             Task{
-                do {
-                    try await viewModel.loadCurrentUser()
-                    if ( viewModel.dbUser != nil ){
-                        col = viewModel.dbUser!.accentColor
-                    }
-                }catch{
-                    isUserLoggedIn = false
+                cortexVM.refreshCurrentUser()
+                if ( cortexVM.dbUser != nil ){
+                    col = cortexVM.dbUser!.accentColor
                 }
             }
         })
