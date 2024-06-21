@@ -27,6 +27,9 @@ struct ContentView: View {
             RecognizerView()
                 .tabItem { Label("Recognizer", systemImage: "camera.fill") }
             
+            BarcodeScanner()
+                .tabItem { Label("Barcode", systemImage: "barcode.viewfinder") }
+            
             AccountView()
                 .tabItem { Label("Account", systemImage: "person.crop.circle")}
             

@@ -52,7 +52,15 @@ struct WrappingView: View {
     
     var body: some View {
         ZStack{
-            ARViewContainer().edgesIgnoringSafeArea(.all)
+            ARViewContainer()
+            
+            VStack{
+                
+                Spacer()
+                
+                Text(recogd.recognizedObject)
+                    .foregroundStyle(.white)
+            }
         }
     }
 }
@@ -67,18 +75,11 @@ struct ARViewContainer: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {
-        // var txt = SCNText()
         
-        // let's keep the number of anchors to no more than 1 for this demo
+        // Only recognize one anchor
         if recogd.aView.scene.anchors.count > 0 {
             recogd.aView.scene.anchors.removeAll()
         }
-        
-        // create the AR Text to place on the screen
-//        txt = SCNText(string: recogd.recognizedObject, extrusionDepth: 0.5)
-//        let material = SCNMaterial()
-//        material.diffuse.contents = UIColor.magenta
-//        txt.materials = [material]
         
         let randomColor = generateRandomColor()
         
