@@ -8,12 +8,10 @@
 import Foundation
 import SwiftData
 
-
-@Model
-final class ItemModel {
+final class ItemModel : Codable, Identifiable {
     
     // We're using strings here because they're a little bit easier to work with when we try to integrate with 3rd party databases
-    @Attribute(.unique)
+    // @Attribute(.unique)
     var id: String
     
     var title: String 
@@ -34,6 +32,7 @@ final class ItemModel {
         
         self.createdDate = createdDate
     }
+
     
     func toggleCompletion() -> ItemModel{
         return ItemModel(id: self.id, title: self.title, isCompleted: !self.isCompleted)

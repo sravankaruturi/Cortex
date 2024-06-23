@@ -13,7 +13,7 @@ struct EditListRowView: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var context
     
-    @Bindable var todoItem: ItemModel
+    @Binding var todoItem: ItemModel
     
     var body: some View {
         
@@ -68,18 +68,7 @@ struct EditListRowView: View {
 
 #Preview {
     
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    do {
-        let container = try! ModelContainer(for: ItemModel.self, configurations: config)
-        
-        let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
-        
-        return EditListRowView(todoItem: item)
-            .modelContainer(container)
-            .padding(.all)
-    }
-    catch{
-        return Text(error.localizedDescription)
-    }
+    let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
+    EditListRowView(todoItem: .constant(item))
     
 }

@@ -10,9 +10,7 @@ import SwiftData
 
 struct ListRowView: View {
     
-    @Bindable var item: ItemModel
-    
-    @Environment(\.modelContext) var context
+    @State var item: ItemModel
     
     @EnvironmentObject var cortexVM: CortexViewModel
     
@@ -55,7 +53,7 @@ struct ListRowView: View {
         .swipeActions {
             Button(role: .destructive) {
                 withAnimation {
-                    context.delete(item)
+                    // TODO: Do Something here.
                 }
             } label: {
                 Label("Delete", systemImage: "trash")
@@ -71,7 +69,7 @@ struct ListRowView: View {
 
         }
         .sheet(isPresented: $showEditView, content: {
-            EditListRowView(todoItem: item)
+            EditListRowView(todoItem: $item)
                 .presentationDetents([.medium])
         })
         
@@ -85,18 +83,7 @@ struct ListRowView: View {
 //    var item2 = ItemModel(title: "This is the second", isCompleted: true)
 //    var item3 = ItemModel(title: "Third", isCompleted: false)
     
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    do {
-        let container = try! ModelContainer(for: ItemModel.self, configurations: config)
-        
-        let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
-        
-        return ListRowView(item: item)
-            .modelContainer(container)
-            .padding(.all)
-    }
-    catch{
-        return Text(error.localizedDescription)
-    }
+    let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
+    ListRowView(item: item)
     
 }

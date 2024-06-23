@@ -23,7 +23,6 @@ struct CortexApp: App {
                 CortexAppView()
             }
         }
-        .modelContainer(for: ItemModel.self)
         .environmentObject(cortexViewModel)
     }
 }
