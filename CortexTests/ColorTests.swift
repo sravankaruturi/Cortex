@@ -25,7 +25,10 @@ struct ColorTests {
     func ColorReturnsRGBValues() {
         
         let col = Color(.white)
-        #expect( col.getRGBValues() == [1.0, 1.0, 1.0] )
+        let rgbValues = col.getRGBValues()
+        #expect( abs(rgbValues[0] - 1.0 ) < Float.ulpOfOne )
+        #expect( abs(rgbValues[1] - 1.0 ) < Float.ulpOfOne )
+        #expect( abs(rgbValues[2] - 1.0 ) < Float.ulpOfOne )
         
     }
     
