@@ -25,6 +25,9 @@ struct ListRowView: View {
                         withAnimation(.bouncy){
                             NotificationManager.instance.removeNotificationForItem(item)
                             item.isCompleted.toggle()
+                            Task{
+                                await cortexVM.saveItem(item)
+                            }
                         }
                     }
                 Text(item.title)

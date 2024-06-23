@@ -18,7 +18,7 @@ struct CortexAppView: View {
             if ( cortexVM.isUserLoggedIn ){
                 TabView{
                     ListView()
-                        .badge(cortexVM.dbUser?.items.count ?? 0)
+                        .badge(cortexVM.items.count)
                         .tabItem { Label("To Do", systemImage: "checklist") }
                     
                     PomoView()
