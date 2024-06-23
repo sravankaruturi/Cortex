@@ -38,7 +38,7 @@
 		F6857BF32C27C86800163CCC /* CortexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6857BF22C27C86800163CCC /* CortexTests.swift */; };
 		F6857BFA2C27D04400163CCC /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6857BF92C27D04400163CCC /* ColorTests.swift */; };
 		F695F46C2AC10870004B2EFD /* CortexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46B2AC10870004B2EFD /* CortexApp.swift */; };
-		F695F46E2AC10870004B2EFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46D2AC10870004B2EFD /* ContentView.swift */; };
+		F695F46E2AC10870004B2EFD /* CortexAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46D2AC10870004B2EFD /* CortexAppView.swift */; };
 		F695F4722AC10871004B2EFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F695F4712AC10871004B2EFD /* Assets.xcassets */; };
 		F695F4752AC10871004B2EFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F695F4742AC10871004B2EFD /* Preview Assets.xcassets */; };
 		F695F4812AC26A22004B2EFD /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F4802AC26A22004B2EFD /* ListView.swift */; };
@@ -86,7 +86,7 @@
 		F6857BF92C27D04400163CCC /* ColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		F695F4682AC10870004B2EFD /* Cortex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cortex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F695F46B2AC10870004B2EFD /* CortexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CortexApp.swift; sourceTree = "<group>"; };
-		F695F46D2AC10870004B2EFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F695F46D2AC10870004B2EFD /* CortexAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CortexAppView.swift; sourceTree = "<group>"; };
 		F695F4712AC10871004B2EFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F695F4742AC10871004B2EFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F695F4802AC26A22004B2EFD /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				F677C0E52C055ACC00552894 /* Accounts */,
-				F695F46D2AC10870004B2EFD /* ContentView.swift */,
+				F695F46D2AC10870004B2EFD /* CortexAppView.swift */,
 				F671FD8C2ADD19CA00D9458E /* PomoView.swift */,
 				F695F4802AC26A22004B2EFD /* ListView.swift */,
 				F695F4822AC26DA2004B2EFD /* ListRowView.swift */,
@@ -370,7 +370,7 @@
 				F695F4812AC26A22004B2EFD /* ListView.swift in Sources */,
 				F677C0EF2C06A08400552894 /* UpdateEmailView.swift in Sources */,
 				F677C1062C08EA8100552894 /* RecognizerView.swift in Sources */,
-				F695F46E2AC10870004B2EFD /* ContentView.swift in Sources */,
+				F695F46E2AC10870004B2EFD /* CortexAppView.swift in Sources */,
 				F671FD892ADCE0D500D9458E /* NotificationManager.swift in Sources */,
 				F677C0EB2C05733400552894 /* SettingsView.swift in Sources */,
 				F677C0F82C06C2D900552894 /* Ext+UIApplication.swift in Sources */,

@@ -25,13 +25,16 @@ import SwiftUI
 @MainActor
 class CortexViewModel: ObservableObject{
     
-    @Published private(set) var user: AuthDataResultModel? = nil
-    @Published var dbUser: DBAccountInfo? = nil
+    // Not Published.
+    var user: AuthDataResultModel? = nil
+    var dbUser: DBAccountInfo? = nil
     
     @AppStorage("tintColor") var tintColor: Color = .brandPrimary
     
     var authManager: AuthenticationManager = AuthenticationManager()
     var userManager: UserManager = UserManager()
+    
+    @Published var isUserLoggedIn: Bool = false
     
     init() {
         
@@ -51,10 +54,27 @@ class CortexViewModel: ObservableObject{
         
     }
     
+    func onAppAppear() async {
+        
+        do {
+            try await loadCurrentUser()
+            withAnimation {
+                self.tintColor = dbUser!.accentColor
+            }
+        }catch {
+            // DO NOTHING
+        }
+        
+    }
+    
     func loadCurrentUser() async throws {
         
         self.user = try authManager.getAuthenticatedUser()
         self.dbUser = try await userManager.getUser(userId: self.user!.uid)
+        
+        if ( dbUser != nil ){
+            isUserLoggedIn = true
+        }
         
     }
     
