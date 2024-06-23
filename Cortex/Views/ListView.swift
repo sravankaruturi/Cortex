@@ -19,7 +19,9 @@ struct ListView: View {
         NavigationStack{
             List{
                 Section("To Do", isExpanded: $incompleteExpanded) {
-                    ForEach(cortexVM.items){ item in
+                    ForEach(
+                        cortexVM.items.filter{ !$0.isCompleted }
+                    ){ item in
                         ListRowView(item: item)
                     }
                     .onDelete{ indexes in
@@ -31,7 +33,9 @@ struct ListView: View {
                 }
                 
                 Section("Completed", isExpanded: $completedExpanded){
-                    ForEach(cortexVM.items){ item in
+                    ForEach(
+                        cortexVM.items.filter{ $0.isCompleted }
+                    ){ item in
                         ListRowView(item: item)
                     }
                 }

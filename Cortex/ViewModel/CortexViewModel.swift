@@ -171,6 +171,12 @@ class CortexViewModel: ObservableObject{
             print(error)
         }
         
+        DispatchQueue.main.async {
+            Task{
+                self.items = try await self.itemManager!.getItems()
+            }
+        }
+        
     }
     
     
