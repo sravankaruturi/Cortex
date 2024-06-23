@@ -10,9 +10,6 @@ import SwiftData
 
 struct CortexAppView: View {
     
-    @Environment(\.modelContext) private var modelContext
-    @Query(filter: #Predicate<ItemModel>{!$0.isCompleted}, sort: \ItemModel.sortOrder, animation: .easeInOut(duration: 0.5)) var incompleteItems: [ItemModel]
-    
     @EnvironmentObject var cortexVM: CortexViewModel
 
     var body: some View {
@@ -21,7 +18,7 @@ struct CortexAppView: View {
             if ( cortexVM.isUserLoggedIn ){
                 TabView{
                     ListView()
-                        .badge(incompleteItems.count)
+                        .badge(cortexVM.dbUser?.items.count ?? 0)
                         .tabItem { Label("To Do", systemImage: "checklist") }
                     
                     PomoView()
@@ -40,7 +37,7 @@ struct CortexAppView: View {
                 
             }else {
                 VStack{
-                    Text("Unfortunately, it is required to sign in with your google account for now.")
+                    Text("Please Sign in")
                         .padding()
                     AccountView()
                 }
@@ -58,5 +55,4 @@ struct CortexAppView: View {
 
 #Preview {
     CortexAppView()
-        .modelContainer(for: ItemModel.self)
 }

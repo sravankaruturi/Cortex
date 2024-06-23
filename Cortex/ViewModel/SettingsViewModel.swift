@@ -29,11 +29,26 @@ final class UserManager {
         
     }
     
+    func saveItem(item: ItemModel, accountInfo: DBAccountInfo) async throws {
+        let doc = Firestore.firestore().collection("users").document(accountInfo.userId).collection("data")
+        try await doc.addDocument(data:
+        [
+            "title"         : item.title,
+            "is_completed"  : item.isCompleted,
+            "has_reminder"  : item.hasReminder,
+            "due_date"      : item.dueDate,
+            "create_date"   : item.createdDate,
+            "sort_order"    : item.sortOrder
+        ]
+        )
+    }
+    
     func updateUser(accountInfo: DBAccountInfo) async throws {
+        
         let doc = Firestore.firestore().collection("users").document(accountInfo.userId)
         try await doc.updateData(
             [
-                "accent_color": accountInfo.accentColor.getRGBValues()
+                "accent_color": accountInfo.accentColor.getRGBValues(),
             ]
         )
     }
@@ -63,7 +78,16 @@ final class UserManager {
             
         }
         
-        return DBAccountInfo(userId: userId, email: email, dateCreated: dateCreated, accentColor: tintColor)
+        let itemSnapShot = try await Firestore.firestore().collection("users").document(userId).collection("data").getDocuments()
+        
+        var items: [ItemModel] = []
+        
+        // TODO: This is a testable function that can be extracted.
+        for document in itemSnapShot.documents {
+            try items.append(ItemModel(document: document))
+        }
+        
+        return DBAccountInfo(userId: userId, email: email, dateCreated: dateCreated, accentColor: tintColor, items: items)
         
     }
     

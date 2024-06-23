@@ -10,26 +10,20 @@ import SwiftData
 
 struct ListView: View {
     
-    @Environment(\.modelContext) var context
-    
-    @Query(filter: #Predicate<ItemModel>{!$0.isCompleted}, sort: \ItemModel.sortOrder, animation: .easeInOut(duration: 0.5)) var incompleteItems: [ItemModel]
-    
-    @Query(filter: #Predicate<ItemModel>{$0.isCompleted}, sort: \ItemModel.sortOrder) var completeItems: [ItemModel]
-    
     @State private var completedExpanded: Bool = false
     @State private var incompleteExpanded: Bool = true
+    
+    @EnvironmentObject var cortexVM: CortexViewModel
     
     var body: some View {
         NavigationStack{
             List{
                 Section("To Do", isExpanded: $incompleteExpanded) {
-                    ForEach(incompleteItems){ item in
+                    ForEach(cortexVM.dbUser!.items){ item in
                         ListRowView(item: item)
                     }
                     .onDelete{ indexes in
-                        for index in indexes {
-                            context.delete(incompleteItems[index])
-                        }
+                        // TODO: Fix deletion
                     }
                     .onMove(perform: { indices, newOffset in
                         move(from: indices, to: newOffset)
@@ -37,7 +31,7 @@ struct ListView: View {
                 }
                 
                 Section("Completed", isExpanded: $completedExpanded){
-                    ForEach(completeItems){ item in
+                    ForEach(cortexVM.dbUser!.items){ item in
                         ListRowView(item: item)
                     }
                 }
@@ -55,16 +49,6 @@ struct ListView: View {
                     }
                 label: {
                     Image(systemName: "plus")
-                    //                        ZStack{
-                    //
-                    //                            Circle()
-                    //
-                    //                            Image(systemName: "plus")
-                    //                                .frame(width: 50, height: 50)
-                    //                                .shadow(radius: 10)
-                    //                                .foregroundColor(.white)
-                    //
-                    //                        }
                     }
                 }
             }
@@ -73,13 +57,14 @@ struct ListView: View {
     
     private func move(from source: IndexSet, to destination: Int){
         
-        var revisedItems: [ ItemModel ] = incompleteItems.map{ $0 }
-        revisedItems.move(fromOffsets: source, toOffset: destination)
-        
-        for reverseIndex in stride( from: revisedItems.count - 1, through: 0, by: -1 )
-        {
-            revisedItems[reverseIndex].sortOrder = reverseIndex
-        }
+        // TODO: Fix this 
+//        var revisedItems: [ ItemModel ] = incompleteItems.map{ $0 }
+//        revisedItems.move(fromOffsets: source, toOffset: destination)
+//        
+//        for reverseIndex in stride( from: revisedItems.count - 1, through: 0, by: -1 )
+//        {
+//            revisedItems[reverseIndex].sortOrder = reverseIndex
+//        }
         
     }
 
@@ -87,5 +72,4 @@ struct ListView: View {
 
 #Preview {
     ListView()
-        .modelContainer(for: [ItemModel.self])
 }

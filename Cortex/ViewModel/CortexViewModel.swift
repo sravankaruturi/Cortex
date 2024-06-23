@@ -27,7 +27,7 @@ class CortexViewModel: ObservableObject{
     
     // Not Published.
     var user: AuthDataResultModel? = nil
-    var dbUser: DBAccountInfo? = nil
+    @Published var dbUser: DBAccountInfo? = nil
     
     @AppStorage("tintColor") var tintColor: Color = .brandPrimary
     
@@ -109,6 +109,32 @@ class CortexViewModel: ObservableObject{
         let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
         
         return try await authManager.signInWithCredential(credential: credential, userManager: userManager)
+        
+    }
+    
+    // Split this into multiple functions such that adding an element to the list is tracked by swiftUI and the db call is not for withAnimationCall
+    // https://forums.swift.org/t/how-to-use-async-await-with-call-to-withanimation/53969
+    func saveItem(_ item: ItemModel) async {
+        
+        if !isUserLoggedIn {
+            // TODO: Throw an error
+            print("The user is not logged in")
+            return
+        }
+        
+        guard dbUser != nil else {
+            // TODO: Throw an error
+            print("The DB user is nil")
+            return
+        }
+        
+        dbUser!.items.append(item)
+        
+        do {
+            try await userManager.saveItem(item: item, accountInfo: dbUser!)
+        }catch {
+            print(error)
+        }
         
     }
     

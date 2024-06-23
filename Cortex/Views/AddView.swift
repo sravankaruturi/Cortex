@@ -11,7 +11,6 @@ import SwiftData
 struct AddView: View {
     
     @Environment(\.presentationMode) var presentationMode
-    @Environment(\.modelContext) var context
     
     @EnvironmentObject var cortexViewModel: CortexViewModel
     
@@ -56,11 +55,14 @@ struct AddView: View {
     
     func saveButtonPressed(){
         if isValidText(){
-            withAnimation {
-                context.insert(item)
-                NotificationManager.instance.scheduleNotifications(item)
+            Task{
+                await cortexViewModel.saveItem(item)
+                cortexViewModel.refreshCurrentUser()
+                withAnimation {
+                    NotificationManager.instance.scheduleNotifications(item)
+                }
+                presentationMode.wrappedValue.dismiss()
             }
-            presentationMode.wrappedValue.dismiss()
         }
     }
     
@@ -74,18 +76,7 @@ struct AddView: View {
 
 #Preview {
     
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    do {
-        let container = try! ModelContainer(for: ItemModel.self, configurations: config)
-        
-        let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
-        
-        return AddView()
-            .modelContainer(container)
-            .padding(.all)
-    }
-    catch{
-        return Text(error.localizedDescription)
-    }
+    let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
+    AddView()
     
 }
