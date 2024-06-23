@@ -9,26 +9,18 @@ import SwiftUI
 import SwiftData
 import CoreData
 
-
-/*
- 
- MVVM - Architecture
- 
- Model - Data Points
- View - UI
- ViewModel - Manages Models for Views.
- 
- */
-
 @main
 struct CortexApp: App {
+
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @StateObject private var cortexViewModel = CortexViewModel()
+
     
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                ContentView()
+                CortexAppView()
             }
         }
         .modelContainer(for: ItemModel.self)
