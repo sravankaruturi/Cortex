@@ -73,10 +73,3 @@ struct AddView: View {
         return true
     }
 }
-
-#Preview {
-    
-    let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
-    AddView()
-    
-}

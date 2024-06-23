@@ -75,15 +75,3 @@ struct ListRowView: View {
         
     }
 }
-
-
-#Preview {
-    
-//    var item1 = ItemModel(title: "This is the first thing", isCompleted: false)
-//    var item2 = ItemModel(title: "This is the second", isCompleted: true)
-//    var item3 = ItemModel(title: "Third", isCompleted: false)
-    
-    let item = ItemModel(id: "", title: "Cheese", isCompleted: false, hasReminder: true, dueDate: Date(), createdDate: Date())
-    ListRowView(item: item)
-    
-}
