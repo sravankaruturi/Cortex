@@ -24,9 +24,63 @@ extension ItemModel {
             title: title,
             isCompleted: isCompleted,
             hasReminder: hasReminder,
+            dueDate: dueDate,
             createdDate: createdDate
         )
         
+    }
+    
+}
+
+final class ItemManager {
+    
+    var userId: String
+    
+    init(userId: String) {
+        self.userId = userId
+    }
+    
+    func getItems() async throws  -> [ItemModel] {
+        
+        let itemSnapShot = try await Firestore.firestore().collection("users").document(userId).collection("data").getDocuments()
+        
+        var items: [ItemModel] = []
+        
+        // TODO: This is a testable function that can be extracted.
+        for document in itemSnapShot.documents {
+            try items.append(ItemModel(document: document))
+        }
+        
+        return items
+        
+    }
+    
+    func addItem(item: ItemModel) async throws {
+        let doc = Firestore.firestore().collection("users").document(userId).collection("data")
+        try await doc.addDocument(data:
+        [
+            "title"         : item.title,
+            "is_completed"  : item.isCompleted,
+            "has_reminder"  : item.hasReminder,
+            "due_date"      : item.dueDate,
+            "create_date"   : item.createdDate,
+            "sort_order"    : item.sortOrder
+        ]
+        )
+    }
+    
+    func saveItem(item: ItemModel) async throws {
+        let doc = Firestore.firestore().collection("users").document(userId).collection("data").document(item.id)
+        try await doc.updateData(
+        [
+            "title"         : item.title,
+            "is_completed"  : item.isCompleted,
+            "has_reminder"  : item.hasReminder,
+            "due_date"      : item.dueDate,
+            "create_date"   : item.createdDate,
+            "sort_order"    : item.sortOrder
+        ]
+        )
     }
     
 }

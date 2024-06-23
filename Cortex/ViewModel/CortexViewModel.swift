@@ -29,10 +29,13 @@ class CortexViewModel: ObservableObject{
     var user: AuthDataResultModel? = nil
     @Published var dbUser: DBAccountInfo? = nil
     
+    @Published var items: [ItemModel] = []
+    
     @AppStorage("tintColor") var tintColor: Color = .brandPrimary
     
     var authManager: AuthenticationManager = AuthenticationManager()
     var userManager: UserManager = UserManager()
+    var itemManager: ItemManager?
     
     @Published var isUserLoggedIn: Bool = false
     
@@ -71,6 +74,14 @@ class CortexViewModel: ObservableObject{
         
         self.user = try authManager.getAuthenticatedUser()
         self.dbUser = try await userManager.getUser(userId: self.user!.uid)
+        self.itemManager = ItemManager(userId: self.user!.uid)
+        
+        guard itemManager != nil else {
+            print("Item Manager cannot be initialized")
+            return
+        }
+        
+        items = try await itemManager!.getItems()
         
         if ( dbUser != nil ){
             isUserLoggedIn = true
@@ -114,6 +125,32 @@ class CortexViewModel: ObservableObject{
     
     // Split this into multiple functions such that adding an element to the list is tracked by swiftUI and the db call is not for withAnimationCall
     // https://forums.swift.org/t/how-to-use-async-await-with-call-to-withanimation/53969
+    func addItem(_ item: ItemModel) async {
+        
+        if !isUserLoggedIn {
+            // TODO: Throw an error
+            print("The user is not logged in")
+            return
+        }
+        
+        guard dbUser != nil else {
+            // TODO: Throw an error
+            print("The DB user is nil")
+            return
+        }
+        
+        items.append(item)
+        
+        do {
+            try await itemManager!.addItem(item: item)
+        }catch {
+            print(error)
+        }
+        
+    }
+    
+    // Split this into multiple functions such that adding an element to the list is tracked by swiftUI and the db call is not for withAnimationCall
+    // https://forums.swift.org/t/how-to-use-async-await-with-call-to-withanimation/53969
     func saveItem(_ item: ItemModel) async {
         
         if !isUserLoggedIn {
@@ -128,10 +165,8 @@ class CortexViewModel: ObservableObject{
             return
         }
         
-        dbUser!.items.append(item)
-        
         do {
-            try await userManager.saveItem(item: item, accountInfo: dbUser!)
+            try await itemManager!.saveItem(item: item)
         }catch {
             print(error)
         }

@@ -35,8 +35,8 @@ struct AddView: View {
                     DatePicker("Due Date", selection: $item.dueDate, displayedComponents: [.date, .hourAndMinute])
                 }
                 
-                Button(action: saveButtonPressed, label: {
-                    Text("Save".uppercased())
+                Button(action: addItemButtonPressed, label: {
+                    Text("Add Item".uppercased())
                         .foregroundStyle(.white)
                         .font(.headline)
                         .frame(height: 55)
@@ -53,10 +53,10 @@ struct AddView: View {
         
     }
     
-    func saveButtonPressed(){
+    func addItemButtonPressed(){
         if isValidText(){
             Task{
-                await cortexViewModel.saveItem(item)
+                await cortexViewModel.addItem(item)
                 cortexViewModel.refreshCurrentUser()
                 withAnimation {
                     NotificationManager.instance.scheduleNotifications(item)
