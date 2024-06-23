@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension Color : RawRepresentable, Codable {
+extension Color : @retroactive RawRepresentable, Codable {
     
     public init?(rawValue: String) {
         

@@ -14,7 +14,6 @@
 		F670D1B82C233FFE00248650 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F670D1B72C233FFE00248650 /* BarcodeScanner.swift */; };
 		F671FD872ADC53D900D9458E /* EditListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD862ADC53D900D9458E /* EditListRowView.swift */; };
 		F671FD892ADCE0D500D9458E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD882ADCE0D500D9458E /* NotificationManager.swift */; };
-		F671FD8B2ADD091C00D9458E /* MainMenuOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD8A2ADD091C00D9458E /* MainMenuOptions.swift */; };
 		F671FD8D2ADD19CA00D9458E /* PomoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD8C2ADD19CA00D9458E /* PomoView.swift */; };
 		F671FD8F2ADDC9E800D9458E /* PomoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD8E2ADDC9E800D9458E /* PomoViewModel.swift */; };
 		F6741CAD2BFBAD1A007EBBF2 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6741CAC2BFBAD1A007EBBF2 /* Ext+Color.swift */; };
@@ -36,6 +35,8 @@
 		F677C1042C07BE1A00552894 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677C1032C07BE1A00552894 /* SettingsViewModel.swift */; };
 		F677C1062C08EA8100552894 /* RecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677C1052C08EA8100552894 /* RecognizerView.swift */; };
 		F67DAADF2B7060350096FD02 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67DAADE2B7060350096FD02 /* ListModel.swift */; };
+		F6857BF32C27C86800163CCC /* CortexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6857BF22C27C86800163CCC /* CortexTests.swift */; };
+		F6857BFA2C27D04400163CCC /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6857BF92C27D04400163CCC /* ColorTests.swift */; };
 		F695F46C2AC10870004B2EFD /* CortexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46B2AC10870004B2EFD /* CortexApp.swift */; };
 		F695F46E2AC10870004B2EFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F46D2AC10870004B2EFD /* ContentView.swift */; };
 		F695F4722AC10871004B2EFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F695F4712AC10871004B2EFD /* Assets.xcassets */; };
@@ -47,6 +48,16 @@
 		F695F48B2AC34B27004B2EFD /* CortexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F695F48A2AC34B27004B2EFD /* CortexViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F6857BF42C27C86800163CCC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F695F4602AC10870004B2EFD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F695F4672AC10870004B2EFD;
+			remoteInfo = Cortex;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		F60EA2C12C0C4BBA00BAC693 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
 		F60EA2C32C0C546700BAC693 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
@@ -55,7 +66,6 @@
 		F670D1B72C233FFE00248650 /* BarcodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		F671FD862ADC53D900D9458E /* EditListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListRowView.swift; sourceTree = "<group>"; };
 		F671FD882ADCE0D500D9458E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
-		F671FD8A2ADD091C00D9458E /* MainMenuOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOptions.swift; sourceTree = "<group>"; };
 		F671FD8C2ADD19CA00D9458E /* PomoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoView.swift; sourceTree = "<group>"; };
 		F671FD8E2ADDC9E800D9458E /* PomoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PomoViewModel.swift; sourceTree = "<group>"; };
 		F6741CAC2BFBAD1A007EBBF2 /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
@@ -71,6 +81,9 @@
 		F677C1052C08EA8100552894 /* RecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerView.swift; sourceTree = "<group>"; };
 		F67DAADC2B6F36060096FD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F67DAADE2B7060350096FD02 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
+		F6857BF02C27C86800163CCC /* CortexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CortexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6857BF22C27C86800163CCC /* CortexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CortexTests.swift; sourceTree = "<group>"; };
+		F6857BF92C27D04400163CCC /* ColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTests.swift; sourceTree = "<group>"; };
 		F695F4682AC10870004B2EFD /* Cortex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cortex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F695F46B2AC10870004B2EFD /* CortexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CortexApp.swift; sourceTree = "<group>"; };
 		F695F46D2AC10870004B2EFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,6 +97,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F6857BED2C27C86800163CCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F695F4652AC10870004B2EFD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -122,7 +142,6 @@
 		F67DAADD2B6F63D90096FD02 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				F671FD8A2ADD091C00D9458E /* MainMenuOptions.swift */,
 				F671FD882ADCE0D500D9458E /* NotificationManager.swift */,
 				F6741CAC2BFBAD1A007EBBF2 /* Ext+Color.swift */,
 				F677C0F72C06C2D900552894 /* Ext+UIApplication.swift */,
@@ -130,10 +149,20 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		F6857BF12C27C86800163CCC /* CortexTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6857BF22C27C86800163CCC /* CortexTests.swift */,
+				F6857BF92C27D04400163CCC /* ColorTests.swift */,
+			);
+			path = CortexTests;
+			sourceTree = "<group>";
+		};
 		F695F45F2AC10870004B2EFD = {
 			isa = PBXGroup;
 			children = (
 				F695F46A2AC10870004B2EFD /* Cortex */,
+				F6857BF12C27C86800163CCC /* CortexTests */,
 				F695F4692AC10870004B2EFD /* Products */,
 				F677C0E02C05598700552894 /* Frameworks */,
 			);
@@ -143,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				F695F4682AC10870004B2EFD /* Cortex.app */,
+				F6857BF02C27C86800163CCC /* CortexTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,6 +245,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F6857BEF2C27C86800163CCC /* CortexTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6857BF62C27C86800163CCC /* Build configuration list for PBXNativeTarget "CortexTests" */;
+			buildPhases = (
+				F6857BEC2C27C86800163CCC /* Sources */,
+				F6857BED2C27C86800163CCC /* Frameworks */,
+				F6857BEE2C27C86800163CCC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6857BF52C27C86800163CCC /* PBXTargetDependency */,
+			);
+			name = CortexTests;
+			productName = CortexTests;
+			productReference = F6857BF02C27C86800163CCC /* CortexTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F695F4672AC10870004B2EFD /* Cortex */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F695F4782AC10871004B2EFD /* Build configuration list for PBXNativeTarget "Cortex" */;
@@ -248,9 +296,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					F6857BEF2C27C86800163CCC = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = F695F4672AC10870004B2EFD;
+					};
 					F695F4672AC10870004B2EFD = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -274,11 +326,19 @@
 			projectRoot = "";
 			targets = (
 				F695F4672AC10870004B2EFD /* Cortex */,
+				F6857BEF2C27C86800163CCC /* CortexTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F6857BEE2C27C86800163CCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F695F4662AC10870004B2EFD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +352,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F6857BEC2C27C86800163CCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6857BF32C27C86800163CCC /* CortexTests.swift in Sources */,
+				F6857BFA2C27D04400163CCC /* ColorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F695F4642AC10870004B2EFD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,7 +385,6 @@
 				F677C0E92C055CF200552894 /* AuthenticationManager.swift in Sources */,
 				F671FD872ADC53D900D9458E /* EditListRowView.swift in Sources */,
 				F60EA2C42C0C546700BAC693 /* SqueezeNet.mlmodel in Sources */,
-				F671FD8B2ADD091C00D9458E /* MainMenuOptions.swift in Sources */,
 				F60EA2C22C0C4BBA00BAC693 /* MobileNetV2.mlmodel in Sources */,
 				F60EA2C82C0CF06100BAC693 /* AppDelegate.swift in Sources */,
 				F67DAADF2B7060350096FD02 /* ListModel.swift in Sources */,
@@ -329,7 +397,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F6857BF52C27C86800163CCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F695F4672AC10870004B2EFD /* Cortex */;
+			targetProxy = F6857BF42C27C86800163CCC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F6857BF72C27C86800163CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DT3Z5369QL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sravan.CortexTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cortex.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cortex";
+			};
+			name = Debug;
+		};
+		F6857BF82C27C86800163CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DT3Z5369QL;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sravan.CortexTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cortex.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cortex";
+			};
+			name = Release;
+		};
 		F695F4762AC10871004B2EFD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -522,6 +636,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F6857BF62C27C86800163CCC /* Build configuration list for PBXNativeTarget "CortexTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6857BF72C27C86800163CCC /* Debug */,
+				F6857BF82C27C86800163CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F695F4632AC10870004B2EFD /* Build configuration list for PBXProject "Cortex" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
