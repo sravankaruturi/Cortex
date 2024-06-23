@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @Binding var isUserLoggedIn: Bool
     @State var col: Color = .white
     
     @EnvironmentObject var cortexVM: CortexViewModel
@@ -17,7 +16,7 @@ struct SettingsView: View {
     var body: some View {
         
         VStack{
-            if ( isUserLoggedIn && cortexVM.user != nil && cortexVM.dbUser != nil ){
+            if ( cortexVM.isUserLoggedIn && cortexVM.user != nil && cortexVM.dbUser != nil ){
                 List{
                     
                     Section("Profile Picture") {
@@ -64,7 +63,7 @@ struct SettingsView: View {
                             
                             do {
                                 try cortexVM.authManager.signOutCurrentUser()
-                                isUserLoggedIn = false
+                                cortexVM.isUserLoggedIn = false
                                 // TODO: Programatically navigate to home.
                             }catch {
                                 print(error)
@@ -80,7 +79,7 @@ struct SettingsView: View {
                 VStack(spacing: 20){
                     Text("Not Logged In")
                     Button {
-                        isUserLoggedIn = false
+                        cortexVM.isUserLoggedIn = false
                     } label: {
                         Text("Go Back")
                     }
@@ -105,6 +104,6 @@ struct SettingsView: View {
 
 #Preview {
     NavigationStack{
-        SettingsView(isUserLoggedIn: .constant(true))
+        SettingsView()
     }
 }

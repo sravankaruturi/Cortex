@@ -37,7 +37,7 @@ struct AccountView: View {
                 
             }else{
                 
-                SettingsView(isUserLoggedIn: $userLoggedIn)
+                SettingsView()
                 
             }
             
