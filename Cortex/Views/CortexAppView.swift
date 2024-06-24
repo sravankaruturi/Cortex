@@ -39,7 +39,7 @@ struct CortexAppView: View {
                 VStack{
                     Text("Please Sign in")
                         .padding()
-                    AccountView()
+                    SignInView(userLoggedIn: $cortexVM.isUserLoggedIn )
                 }
             }
         }
