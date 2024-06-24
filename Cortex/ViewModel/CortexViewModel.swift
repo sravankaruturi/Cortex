@@ -27,17 +27,20 @@ class CortexViewModel: ObservableObject{
     
     // Not Published.
     var user: AuthDataResultModel? = nil
+    
+    // MARK: Published Vars
+    // TODO: Does this need to be published?
     @Published var dbUser: DBAccountInfo? = nil
     
     @Published var items: [ItemModel] = []
+    
+    @Published var isUserLoggedIn: Bool = false
     
     @AppStorage("tintColor") var tintColor: Color = .brandPrimary
     
     var authManager: AuthenticationManager = AuthenticationManager()
     var userManager: UserManager = UserManager()
     var itemManager: ItemManager?
-    
-    @Published var isUserLoggedIn: Bool = false
     
     init() {
         
@@ -81,10 +84,21 @@ class CortexViewModel: ObservableObject{
             return
         }
         
-        items = try await itemManager!.getItems()
+        DispatchQueue.main.async {
+            Task{
+                do {
+                    self.items = try await self.itemManager!.getItems()
+                }catch {
+                    print(error)
+                }
+            }
+        }
+        
         
         if ( dbUser != nil ){
-            isUserLoggedIn = true
+            DispatchQueue.main.async {
+                self.isUserLoggedIn = true
+            }
         }
         
     }
