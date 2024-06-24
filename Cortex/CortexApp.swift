@@ -19,7 +19,7 @@ struct CortexApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
+            NavigationStack{
                 CortexAppView()
             }
         }

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F60EA2C22C0C4BBA00BAC693 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F60EA2C12C0C4BBA00BAC693 /* MobileNetV2.mlmodel */; };
-		F60EA2C42C0C546700BAC693 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F60EA2C32C0C546700BAC693 /* SqueezeNet.mlmodel */; };
 		F60EA2C62C0CEFE300BAC693 /* DBAccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60EA2C52C0CEFE300BAC693 /* DBAccountInfo.swift */; };
 		F60EA2C82C0CF06100BAC693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60EA2C72C0CF06100BAC693 /* AppDelegate.swift */; };
 		F611D3322C295E98002303F7 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611D3312C295E98002303F7 /* SignInView.swift */; };
@@ -34,7 +32,6 @@
 		F677C1002C07BBBC00552894 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F677C0FF2C07BBBC00552894 /* FirebaseFirestore */; };
 		F677C1022C07BBBC00552894 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F677C1012C07BBBC00552894 /* FirebaseFirestoreSwift */; };
 		F677C1042C07BE1A00552894 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677C1032C07BE1A00552894 /* SettingsViewModel.swift */; };
-		F677C1062C08EA8100552894 /* RecognizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F677C1052C08EA8100552894 /* RecognizerView.swift */; };
 		F67DAADF2B7060350096FD02 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67DAADE2B7060350096FD02 /* ListModel.swift */; };
 		F6857BF32C27C86800163CCC /* CortexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6857BF22C27C86800163CCC /* CortexTests.swift */; };
 		F6857BFA2C27D04400163CCC /* ColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6857BF92C27D04400163CCC /* ColorTests.swift */; };
@@ -62,8 +59,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F60EA2C12C0C4BBA00BAC693 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
-		F60EA2C32C0C546700BAC693 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
 		F60EA2C52C0CEFE300BAC693 /* DBAccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAccountInfo.swift; sourceTree = "<group>"; };
 		F60EA2C72C0CF06100BAC693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F611D3312C295E98002303F7 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -83,7 +78,6 @@
 		F677C0F72C06C2D900552894 /* Ext+UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIApplication.swift"; sourceTree = "<group>"; };
 		F677C0FD2C06D38000552894 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F677C1032C07BE1A00552894 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		F677C1052C08EA8100552894 /* RecognizerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizerView.swift; sourceTree = "<group>"; };
 		F67DAADC2B6F36060096FD02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F67DAADE2B7060350096FD02 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		F6857BF02C27C86800163CCC /* CortexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CortexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,8 +193,6 @@
 				F67DAADC2B6F36060096FD02 /* Info.plist */,
 				F677C0FD2C06D38000552894 /* GoogleService-Info.plist */,
 				F695F4712AC10871004B2EFD /* Assets.xcassets */,
-				F60EA2C32C0C546700BAC693 /* SqueezeNet.mlmodel */,
-				F60EA2C12C0C4BBA00BAC693 /* MobileNetV2.mlmodel */,
 				F695F4732AC10871004B2EFD /* Preview Content */,
 			);
 			path = Cortex;
@@ -224,7 +216,6 @@
 				F695F4822AC26DA2004B2EFD /* ListRowView.swift */,
 				F671FD862ADC53D900D9458E /* EditListRowView.swift */,
 				F695F4842AC26F6F004B2EFD /* AddView.swift */,
-				F677C1052C08EA8100552894 /* RecognizerView.swift */,
 				F670D1B72C233FFE00248650 /* BarcodeScanner.swift */,
 			);
 			path = Views;
@@ -381,7 +372,6 @@
 				F670D1B82C233FFE00248650 /* BarcodeScanner.swift in Sources */,
 				F695F4812AC26A22004B2EFD /* ListView.swift in Sources */,
 				F677C0EF2C06A08400552894 /* UpdateEmailView.swift in Sources */,
-				F677C1062C08EA8100552894 /* RecognizerView.swift in Sources */,
 				F695F46E2AC10870004B2EFD /* CortexAppView.swift in Sources */,
 				F671FD892ADCE0D500D9458E /* NotificationManager.swift in Sources */,
 				F6857BFC2C28872800163CCC /* ItemModel+Firebase.swift in Sources */,
@@ -398,8 +388,6 @@
 				F677C0E42C0559E500552894 /* AccountView.swift in Sources */,
 				F677C0E92C055CF200552894 /* AuthenticationManager.swift in Sources */,
 				F671FD872ADC53D900D9458E /* EditListRowView.swift in Sources */,
-				F60EA2C42C0C546700BAC693 /* SqueezeNet.mlmodel in Sources */,
-				F60EA2C22C0C4BBA00BAC693 /* MobileNetV2.mlmodel in Sources */,
 				F60EA2C82C0CF06100BAC693 /* AppDelegate.swift in Sources */,
 				F67DAADF2B7060350096FD02 /* ListModel.swift in Sources */,
 				F695F48B2AC34B27004B2EFD /* CortexViewModel.swift in Sources */,

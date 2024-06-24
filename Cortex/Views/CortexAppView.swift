@@ -24,11 +24,10 @@ struct CortexAppView: View {
                     PomoView()
                         .tabItem { Label("Pomo", systemImage: "timer.circle.fill") }
                     
-                    RecognizerView()
-                        .tabItem { Label("Recognizer", systemImage: "camera.fill") }
-                    
+#if os(iOS)
                     BarcodeScanner()
                         .tabItem { Label("Barcode", systemImage: "barcode.viewfinder") }
+#endif
                     
                     AccountView()
                         .tabItem { Label("Account", systemImage: "person.crop.circle")}
