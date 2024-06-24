@@ -11,6 +11,7 @@
 		F60EA2C42C0C546700BAC693 /* SqueezeNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F60EA2C32C0C546700BAC693 /* SqueezeNet.mlmodel */; };
 		F60EA2C62C0CEFE300BAC693 /* DBAccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60EA2C52C0CEFE300BAC693 /* DBAccountInfo.swift */; };
 		F60EA2C82C0CF06100BAC693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60EA2C72C0CF06100BAC693 /* AppDelegate.swift */; };
+		F611D3322C295E98002303F7 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F611D3312C295E98002303F7 /* SignInView.swift */; };
 		F670D1B82C233FFE00248650 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F670D1B72C233FFE00248650 /* BarcodeScanner.swift */; };
 		F671FD872ADC53D900D9458E /* EditListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD862ADC53D900D9458E /* EditListRowView.swift */; };
 		F671FD892ADCE0D500D9458E /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671FD882ADCE0D500D9458E /* NotificationManager.swift */; };
@@ -65,6 +66,7 @@
 		F60EA2C32C0C546700BAC693 /* SqueezeNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SqueezeNet.mlmodel; sourceTree = "<group>"; };
 		F60EA2C52C0CEFE300BAC693 /* DBAccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAccountInfo.swift; sourceTree = "<group>"; };
 		F60EA2C72C0CF06100BAC693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F611D3312C295E98002303F7 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		F670D1B72C233FFE00248650 /* BarcodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		F671FD862ADC53D900D9458E /* EditListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListRowView.swift; sourceTree = "<group>"; };
 		F671FD882ADCE0D500D9458E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				F677C0E62C055AEB00552894 /* SignInEmailView.swift */,
 				F677C0EA2C05733400552894 /* SettingsView.swift */,
 				F677C0EE2C06A08400552894 /* UpdateEmailView.swift */,
+				F611D3312C295E98002303F7 /* SignInView.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				F695F46E2AC10870004B2EFD /* CortexAppView.swift in Sources */,
 				F671FD892ADCE0D500D9458E /* NotificationManager.swift in Sources */,
 				F6857BFC2C28872800163CCC /* ItemModel+Firebase.swift in Sources */,
+				F611D3322C295E98002303F7 /* SignInView.swift in Sources */,
 				F677C0EB2C05733400552894 /* SettingsView.swift in Sources */,
 				F677C0F82C06C2D900552894 /* Ext+UIApplication.swift in Sources */,
 				F6741CAD2BFBAD1A007EBBF2 /* Ext+Color.swift in Sources */,

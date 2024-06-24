@@ -18,8 +18,13 @@ final class UserManager {
             "user_id" : auth.uid,
             "date_created": Timestamp(),
             "email" : auth.email ?? "",
-            "accent_color": [Color.brandPrimaryComponents]
+            "accent_color_x": Color.brandPrimaryComponents[0],
+            "accent_color_y": Color.brandPrimaryComponents[1],
+            "accent_color_z": Color.brandPrimaryComponents[2],
         ]
+        
+        // TODO: We are overwriting the data with defaults here.
+        // Try to separate the Login and Create New User functions.
         
         do {
             try await Firestore.firestore().collection("users").document(auth.uid).setData(userData, merge: false)
@@ -32,9 +37,12 @@ final class UserManager {
     func updateUser(accountInfo: DBAccountInfo) async throws {
         
         let doc = Firestore.firestore().collection("users").document(accountInfo.userId)
+        let rgb = accountInfo.accentColor.getRGBValues()
         try await doc.updateData(
             [
-                "accent_color": accountInfo.accentColor.getRGBValues(),
+                "accent_color_x": rgb[0],
+                "accent_color_y": rgb[1],
+                "accent_color_z": rgb[2]
             ]
         )
     }
@@ -50,15 +58,17 @@ final class UserManager {
         let email = data["email"] as? String
         let timeStamp = data["date_created"] as? Timestamp
         let dateCreated = ( timeStamp != nil ) ? ( timeStamp?.dateValue() ) : nil
-        let tintColorComponents = data["accent_color"] as? [Float]
+        let tint_x = data["accent_color_x"] as? Float
+        let tint_y = data["accent_color_y"] as? Float
+        let tint_z = data["accent_color_z"] as? Float
         var tintColor: Color = Color.brandPrimary
         
-        if ( tintColorComponents != nil ){
+        if ( tint_x != nil ){
             
             tintColor = Color(uiColor: UIColor(
-                red: CGFloat(tintColorComponents![0]),
-                green: CGFloat(tintColorComponents![1]),
-                blue: CGFloat(tintColorComponents![2]),
+                red: CGFloat(tint_x!),
+                green: CGFloat(tint_y!),
+                blue: CGFloat(tint_z!),
                 alpha: 1.0
             ))
             

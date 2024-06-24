@@ -8,8 +8,6 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseCore
-import GoogleSignIn
-import GoogleSignInSwift
 
 struct AccountView: View {
     
@@ -22,18 +20,7 @@ struct AccountView: View {
             
             if !userLoggedIn {
                 
-                GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(style: .wide)) {
-                    Task{
-                        do{
-                            let user = try await cortexVM.signInGoogle()
-                            userLoggedIn = (user != nil)
-                        }catch{
-                            print(error)
-                        }
-                    }
-                }
-                .frame(height: 55)
-                .padding()
+                SignInView(userLoggedIn: $userLoggedIn)
                 
             }else{
                 
