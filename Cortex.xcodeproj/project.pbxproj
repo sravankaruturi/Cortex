@@ -67,6 +67,7 @@
 		F60EA2C52C0CEFE300BAC693 /* DBAccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAccountInfo.swift; sourceTree = "<group>"; };
 		F60EA2C72C0CF06100BAC693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F611D3312C295E98002303F7 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		F611D3332C2967CE002303F7 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		F670D1B72C233FFE00248650 /* BarcodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		F671FD862ADC53D900D9458E /* EditListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListRowView.swift; sourceTree = "<group>"; };
 		F671FD882ADCE0D500D9458E /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
@@ -169,6 +170,7 @@
 		F695F45F2AC10870004B2EFD = {
 			isa = PBXGroup;
 			children = (
+				F611D3332C2967CE002303F7 /* Readme.md */,
 				F695F46A2AC10870004B2EFD /* Cortex */,
 				F6857BF12C27C86800163CCC /* CortexTests */,
 				F695F4692AC10870004B2EFD /* Products */,
